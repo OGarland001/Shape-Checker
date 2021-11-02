@@ -68,3 +68,8 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
+
+int* getRectanglePoints(int* rectanglePoints)
+{
+
+}
