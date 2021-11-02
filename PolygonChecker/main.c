@@ -24,7 +24,7 @@ int main() {
 			printf_s("%s\n", result);
 			break;
 		case 2:
-
+			printf_s("Angles of a Triangle");
 		case 3:
 
 		case 0:
