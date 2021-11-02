@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 #include "triangleSolver.h"
 
@@ -22,3 +23,17 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 
 	return result;
 }
+
+void AngleSolver(int sideA, int sideB, int sideC) {
+	int angleA, angleB, angleC;
+	// A = cos-1( (b^2 + c^2 - a^2)/2bc )  Formula to find angleA
+	// B = cos-1( (c^2 + a^2 - b^2)/2ca )  Formula to find angleB
+	// C = cos-1( (a^2 + b^2 - c^2)/2ab )  Formula to find angleC
+
+
+
+
+
+
+}
+

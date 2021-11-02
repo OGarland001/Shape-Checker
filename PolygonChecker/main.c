@@ -24,7 +24,11 @@ int main() {
 			printf_s("%s\n", result);
 			break;
 		case 2:
-			printf_s("Angles of a Triangle");
+			printf_s("Angles of a Triangle selected.");
+			int triangleSides[3] = { 0, 0, 0 };
+			int* triangleSidesPtr = getTriangleSides(triangleSides);
+			AngleSolver(triangleSidesPtr);
+
 		case 3:
 
 		case 0:
@@ -61,10 +65,11 @@ int printShapeMenu() {
 }
 
 int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
+	printf_s("Enter the three sides of the triangle: \n");
 	for (int i = 0; i < 3; i++)
 	{
-		scanf_s("%d", &triangleSides[i]);
+		printf("%d. ", i + 1);
+		scanf_s("%d\n", &triangleSides[i]);
 	}
 	return triangleSides;
 }
