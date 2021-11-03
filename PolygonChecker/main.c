@@ -24,23 +24,17 @@ int main() {
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
-			//Do this instead or new case? -- Owen
-			//int userinput;
+			
+			int userinput;
 
-			//printf_s("Would you like to know the inside angles of the triangle? yes(1) or no(0)?");
-			//scanf_s("%d", &userinput);
-			//if (userinput == 1) {
-			//	AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			//}
+			printf_s("Would you like to know the inside angles of the triangle? yes(1) or no(0)?");
+			scanf_s("%d", &userinput);
+			if (userinput == 1) {
+				AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			}
 
 			break;
 		case 2:
-	/*		printf_s("Angles of a Triangle selected.");
-			int triangleSides[3] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			AngleSolver(triangleSidesPtr);*/
-
-		case 3:
 			//tell the user that the selected the rectangle functionality 
 			printf_s("Rectangle selected.\n");
 
@@ -93,8 +87,7 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
-	printf_s("2. Angles of a Triangle\n");
-	printf_s("3. Rectangle\n");
+	printf_s("2. Rectangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;

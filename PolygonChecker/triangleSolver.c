@@ -30,14 +30,17 @@ void AngleSolver(int sideA, int sideB, int sideC) {
 	// A = cos-1( (b^2 + c^2 - a^2)/2bc )  Formula to find angleA
 	// B = cos-1( (c^2 + a^2 - b^2)/2ca )  Formula to find angleB
 	// C = cos-1( (a^2 + b^2 - c^2)/2ab )  Formula to find angleC
+	//squared the 3 different side lengths
 	sqSideA = sideA * sideA;
 	sqSideB = sideB * sideB;
 	sqSideC = sideC * sideC;
 
+	//calculated the angles
 	angleA = acos((sqSideB + sqSideC - sqSideA) / (2 * sideB * sideC));
 	angleB = acos((sqSideC + sqSideA - sqSideB) / (2 * sideC * sideA));
 	angleC = acos((sqSideA + sqSideB - sqSideC) / (2 * sideA * sideB));
 
+	//prints the angles to the user
 	printf("Angle A: %.2f\n", angleA);
 	printf("Angle B: %.2f\n", angleB);
 	printf("Angle C: %.2f\n", angleC);
