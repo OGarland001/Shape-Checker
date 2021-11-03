@@ -4,6 +4,7 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "rectangleSolver.h"
 
 int side = 0;
 
@@ -41,13 +42,13 @@ int main() {
 
 		case 3:
 			//tell the user that the selected the rectangle functionality 
-			printf_s("Rectangle selected.\n");
+			//printf_s("Rectangle selected.\n");
 
-			//collect a corners coordinates
-			int firstEnteredCoordinates[2] = { 0, 0 };
-			//tell the user to enter a point 
-			printf_s("Please enter the coordinates of a corner on the rectangle in the form of x y:\n");
-			int* entered1stRectanglePoints = getRectanglePoints(firstEnteredCoordinates);
+			////collect a corners coordinates
+			////int firstEnteredCoordinates[2] = { 0, 0 };
+			////tell the user to enter a point 
+			//printf_s("Please enter the coordinates of a corner on the rectangle in the form of x,y:\n");
+			//POINT firstPoint = getRectanglePoints();
 
 			//collect a different corners coordiantes 
 			int secondEnteredCoordinates[2] = { 0, 0 };
@@ -111,18 +112,25 @@ int* getTriangleSides(int* triangleSides) {
 }
 
 //This function collects and checks all 4 corners coordinates for the rectangle 
-int* getRectanglePoints(int* rectanglePoint)
+POINT getRectanglePoints()
 {
-	//collect the point from the user 
-	//(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
-	for (int index = 0; index < 2; index++)
-	{
-		//check to see if the user entered a number if they did collect it if not end the program
-		if (scanf_s("%d", &rectanglePoint[index]) == 0)
-		{
-			printf("Invalid input");
-			exit(1);
-		}
+	POINT point;
+	if (scanf_s("%d,%d", &point.x, &point.y) == 0) {
+		printf("invalid input");
+		exit(1);
 	}
-	return rectanglePoint;
+
+	return point;
+	////collect the point from the user 
+	////(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
+	//for (int index = 0; index < 2; index++)
+	//{
+	//	//check to see if the user entered a number if they did collect it if not end the program
+	//	if (scanf_s("%d, %d", &rectanglePoint[index]) == 0)
+	//	{
+	//		printf("Invalid input");
+	//		exit(1);
+	//	}
+	//}
+	//return rectanglePoint;
 }

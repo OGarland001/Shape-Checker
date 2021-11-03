@@ -29,9 +29,42 @@ LINE* generateRectangle(POINT points[])
 {
 	LINE* lines = malloc(4 * sizeof(LINE));
 
+	int minx, maxy, maxx, miny;
+	minx = points[0].x;
+	maxy = points[0].y;
+	maxx = points[0].x;
+	miny = points[0].y;
 
+	for (int i = 1; i < 4; i++) {
+		if (minx > points[i].x) {
+			minx = points[i].x;
+		}
+		if (maxy < points[i].y) {
+			maxy = points[i].y;
+		}
+		if (maxx < points[i].x) {
+			maxx = points[i].x;
+		}
+		if (miny > points[i].y) {
+			miny = points[i].y;
+		}
+	}
+
+
+	for (int i = 0; i < 4; i++) {
+		LINE line;
+		line.pointA = points[i];
+
+		if (i == 3) {
+			line.pointB = points[0];
+		}
+		else {
+			line.pointB = points[i + 1];
+		}
+		lines[i] = line;
+
+	}
 	return lines;
-
 }
 
 
