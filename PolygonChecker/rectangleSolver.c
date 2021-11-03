@@ -24,8 +24,13 @@ bool setupValidRectanglePoints(int point1, int point2, int point3, int point4)
 	return valid;
 }
 
-void generateRectangle()
+//function takes the points and ouputs four lines
+LINE* generateRectangle(POINT points[])
 {
+	LINE* lines = malloc(4 * sizeof(LINE));
+
+
+	return lines;
 
 }
 

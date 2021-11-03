@@ -6,4 +6,13 @@
 bool setupValidRectanglePoints();
 int findRectanglePerimeter();
 int findRectangleArea();
-void generateRectangle();
+LINE* generateRectangle(POINT points[]);
+
+typedef struct Point {		//structure for points
+	int x, y;
+}POINT;
+
+typedef struct Line {		//structure for lines
+	POINT pointA;
+	POINT pointB;
+}LINE;
