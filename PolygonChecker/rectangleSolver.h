@@ -4,8 +4,10 @@
 #include <stdbool.h>
 
 bool setupValidRectanglePoints();
-int findRectanglePerimeter();
-int findRectangleArea();
+float findRectanglePerimeter();
+float findRectangleArea();
+float findSlope();
+float findLength(LINE line);
 LINE* generateRectangle(POINT points[]);
 
 typedef struct Point {		//structure for points
