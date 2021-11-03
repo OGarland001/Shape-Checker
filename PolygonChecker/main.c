@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 #include "main.h"
@@ -22,15 +23,50 @@ int main() {
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
+			//Do this instead or new case? -- Owen
+			//int userinput;
+
+			//printf_s("Would you like to know the inside angles of the triangle? yes(1) or no(0)?");
+			//scanf_s("%d", &userinput);
+			//if (userinput == 1) {
+			//	AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			//}
+
 			break;
 		case 2:
-			printf_s("Angles of a Triangle selected.");
+	/*		printf_s("Angles of a Triangle selected.");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			AngleSolver(triangleSidesPtr);
+			AngleSolver(triangleSidesPtr);*/
 
 		case 3:
+			//tell the user that the selected the rectangle functionality 
+			printf_s("Rectangle selected.\n");
 
+			//collect a corners coordinates
+			int firstEnteredCoordinates[2] = { 0, 0 };
+			//tell the user to enter a point 
+			printf_s("Please enter the coordinates of a corner on the rectangle in the form of x y:\n");
+			int* entered1stRectanglePoints = getRectanglePoints(firstEnteredCoordinates);
+
+			//collect a different corners coordiantes 
+			int secondEnteredCoordinates[2] = { 0, 0 };
+			//tell the user to enter a point 
+			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
+			int* entered2ndRectanglePoints = getRectanglePoints(secondEnteredCoordinates);
+
+			//collect a different corners coordiantes 
+			int thirdEnteredCoordinates[2] = { 0, 0 };
+			//tell the user to enter a point 
+			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
+			int* entered3rdRectanglePoints = getRectanglePoints(thirdEnteredCoordinates);
+
+			//collect a different corners coordiantes 
+			int fourthEnteredCoordinates[2] = { 0, 0 };
+			//tell the user to enter a point 
+			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
+			int* entered4thRectanglePoints = getRectanglePoints(fourthEnteredCoordinates);
+			break;
 		case 0:
 			continueProgram = false;
 			break;
@@ -52,8 +88,8 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
-	printf_s("2. Angles of a Triangle");
-	printf_s("3. Rectangle");
+	printf_s("2. Angles of a Triangle\n");
+	printf_s("3. Rectangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
@@ -74,7 +110,19 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-int* getRectanglePoints(int* rectanglePoints)
+//This function collects and checks all 4 corners coordinates for the rectangle 
+int* getRectanglePoints(int* rectanglePoint)
 {
-
+	//collect the point from the user 
+	//(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
+	for (int index = 0; index < 2; index++)
+	{
+		//check to see if the user entered a number if they did collect it if not end the program
+		if (scanf_s("%d", &rectanglePoint[index]) == 0)
+		{
+			printf("Invalid input");
+			exit(1);
+		}
+	}
+	return rectanglePoint;
 }

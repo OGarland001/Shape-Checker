@@ -2,4 +2,5 @@
 void printWelcome();
 int printShapeMenu();
 int* getTriangleSides(int* triangleSides);
-int* getRectangleSides(int* rectanglePoints);
+//This function collects and checks all 4 corners coordinates for the rectangle 
+int* getRectanglePoints(int*);
