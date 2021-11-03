@@ -1,4 +1,7 @@
 #pragma once
+
+#define MAXNAMELEN 35
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -9,15 +12,18 @@ float findRectangleArea();
 float findSlope();
 float findLength(LINE line);
 LINE* generateRectangle(POINT points[]);
+void isValidRectangle();
 
 typedef struct Point {		//structure for points
-	int x, y;
+	char pointName[MAXNAMELEN];
+	int x;
+	int y;
 }POINT;
 
 typedef struct Line {		//structure for lines
 	POINT pointA;
 	POINT pointB;
 }LINE;
-int findRectanglePerimeter();
-int findRectangleArea();
-void generateRectangle();
+
+//Discuss adding a rectangle struct to avoid passing 4 points in function parameters 
+

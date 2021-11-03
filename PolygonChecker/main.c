@@ -63,7 +63,7 @@ int main() {
 			int* entered4thRectanglePoints = getRectanglePoints(fourthEnteredCoordinates);
 
 			//Call a fucntion that validates if the points form a rectangle 
-
+			isValidRectangle();
 			
 			break;
 		case 0:
