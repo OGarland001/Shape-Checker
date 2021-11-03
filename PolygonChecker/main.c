@@ -4,6 +4,7 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "rectangleSolver.h"
 
 int side = 0;
 
@@ -66,6 +67,10 @@ int main() {
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
 			int* entered4thRectanglePoints = getRectanglePoints(fourthEnteredCoordinates);
+
+			//Call a fucntion that validates if the points form a rectangle 
+
+			
 			break;
 		case 0:
 			continueProgram = false;
@@ -121,7 +126,7 @@ int* getRectanglePoints(int* rectanglePoint)
 		if (scanf_s("%d", &rectanglePoint[index]) == 0)
 		{
 			printf("Invalid input");
-			exit(1);
+			exit(1); //Brodin:In the future I will change this so it will just return back to the menu loop rather than exiting the program 
 		}
 	}
 	return rectanglePoint;
