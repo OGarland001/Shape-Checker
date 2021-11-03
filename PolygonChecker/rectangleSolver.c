@@ -5,14 +5,15 @@ bool setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT p
 {
 	bool valid = true;
 	float slope1, slope2, slope3, slope4;
+
 	//Use a helper function to convert points to slopes
-	//Hardcode for now, potentially use for loop
+
 	slope1 = findSlope(point1, point2);
 	slope2 = findSlope(point2, point3);
 	slope3 = findSlope(point3, point4);
 	slope4 = findSlope(point4, point1);
 	//Two lines which are perpendicular to each other are negative reciprocals, so their product would be -1
-	//potentially convert to while/for loop
+
 	if (slope1 * slope2 != -1) {
 		valid = false;
 	}
@@ -29,7 +30,17 @@ bool setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT p
 }
 
 float findSlope(POINT point1, POINT point2) {
-//TODO
+	int x1, x2, y1, y2;
+
+	x1 = point1.x;
+	y1 = point1.y;
+	x2 = point2.x;
+	y2 = point2.y;
+
+	float slope = (y2 - y1) / (x2 - x1);
+
+	return slope;
+
 }
 //function takes the points and ouputs four lines
 LINE* generateRectangle(POINT points[])
@@ -72,8 +83,21 @@ LINE* generateRectangle(POINT points[])
 	return lines;
 }
 
-float findLength(LINE line[]) {
-//TODO
+float findLength(LINE line) {
+	POINT point1, point2;
+	int x1, x2, y1, y2;
+	int length, height;
+	x1 = line.pointA.x;
+	y1 = line.pointA.y;
+	x2 = line.pointB.x;
+	y2 = line.pointB.y;
+
+	length = x2 - x1;
+	height = y2 - y1;
+
+	length = sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2);
+
+
 }
 //function takes in lines, uses helper function findLength to get 4 lengths, then returns the sum
 float findRectanglePerimeter(LINE line1, LINE line2, LINE line3, LINE line4)
