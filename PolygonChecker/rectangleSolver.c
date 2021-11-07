@@ -48,27 +48,40 @@ LINE* generateRectangle(POINT points[])
 {
 	LINE* lines = malloc(4 * sizeof(LINE));
 
-	int minx, maxy, maxx, miny;
-	minx = points[0].x;
-	maxy = points[0].y;
-	maxx = points[0].x;
-	miny = points[0].y;
+	//get center of 4 points
+	POINT pointcenter;
+	for (int i = 0; i < 4; i++) {
+		pointcenter.x += points[i].x;
+		pointcenter.y += points[i].y;
+	}
+	pointcenter.x /= 4;
+	pointcenter.y /= 4;
 
-	for (int i = 1; i < 4; i++) {
-		if (minx > points[i].x) {
-			minx = points[i].x;
-		}
-		if (maxy < points[i].y) {
-			maxy = points[i].y;
-		}
-		if (maxx < points[i].x) {
-			maxx = points[i].x;
-		}
-		if (miny > points[i].y) {
-			miny = points[i].y;
-		}
+	//get angles
+	double angles[4];
+	for (int i = 0; i < 4; i++) {
+		angles[i] = atan2(points[i].y - pointcenter.y, points[i].x - pointcenter.x);
 	}
 
+	//sort points
+	int minIndex;
+	for (int i = 0; i < 3; i++) {
+		minIndex = i;
+		for (int j = i + 1; j < 4; j++) {
+			if (angles[j] < angles[minIndex]) {		//comparing elements at index i and j
+				minIndex = j;
+			}
+		}
+		double temp = angles[minIndex];		//swapping the angle array
+		angles[minIndex] = angles[i];
+		angles[i] = temp;
+
+		POINT p = points[minIndex];		//swapping corresponding point array
+		points[minIndex] = points[i];
+		points[i] = p;
+	}
+
+	//generate 4 lines to form shape
 	for (int i = 0; i < 4; i++) {
 		LINE line;
 		line.pointA = points[i];
