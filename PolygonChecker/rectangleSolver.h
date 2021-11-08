@@ -7,12 +7,7 @@
 #include <stdbool.h>
 #include <math.h.>
 
-bool setupValidRectanglePoints();
-float findRectanglePerimeter();
-float findRectangleArea();
-float findSlope();
-float findLength(LINE line);
-LINE* generateRectangle(POINT points[]);
+
 
 typedef struct Point {		//structure for points
 	char pointName[MAXNAMELEN];
@@ -26,4 +21,9 @@ typedef struct Line {		//structure for lines
 	POINT pointB;
 }LINE;
 
-
+bool setupValidRectanglePoints(POINT, POINT, POINT, POINT);
+float findRectanglePerimeter(LINE, LINE, LINE, LINE);
+float findRectangleArea(LINE, LINE);
+float findSlope(POINT, POINT);
+float findLength(LINE line);
+LINE* generateRectangle(POINT points[]);
