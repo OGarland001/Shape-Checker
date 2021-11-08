@@ -23,13 +23,8 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
-			
-			int userinput;
-
-			//prompt user if they would like to know the inside angles of the triangle
 		
 			AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			//if selected yes then call the angle solver function to show the angles
 		
 
 			break;
