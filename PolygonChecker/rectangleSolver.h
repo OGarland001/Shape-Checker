@@ -13,7 +13,6 @@ float findRectangleArea();
 float findSlope();
 float findLength(LINE line);
 LINE* generateRectangle(POINT points[]);
-void isValidRectangle();
 
 typedef struct Point {		//structure for points
 	char pointName[MAXNAMELEN];
@@ -26,5 +25,4 @@ typedef struct Line {		//structure for lines
 	POINT pointB;
 }LINE;
 
-//Discuss adding a rectangle struct to avoid passing 4 points in function parameters 
 
