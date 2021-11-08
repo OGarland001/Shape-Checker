@@ -25,20 +25,13 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 }
 
 void AngleSolver(int sideA, int sideB, int sideC) {
+	double RadianA, RadianB, RadianC, RadianAD;
 	double angleA, angleB, angleC;
-	int sqSideA, sqSideB, sqSideC;
-	// A = cos-1( (b^2 + c^2 - a^2)/2bc )  Formula to find angleA
-	// B = cos-1( (c^2 + a^2 - b^2)/2ca )  Formula to find angleB
-	// C = cos-1( (a^2 + b^2 - c^2)/2ab )  Formula to find angleC
-	//squared the 3 different side lengths
-	sqSideA = sideA * sideA;
-	sqSideB = sideB * sideB;
-	sqSideC = sideC * sideC;
 
-	//calculated the angles
-	angleA = acos((sqSideB + sqSideC - sqSideA) / (2 * sideB * sideC));
-	angleB = acos((sqSideC + sqSideA - sqSideB) / (2 * sideC * sideA));
-	angleC = acos((sqSideA + sqSideB - sqSideC) / (2 * sideA * sideB));
+
+	angleA = CosineLawAngleA(sideA, sideB, sideC);
+	angleB = CosineLawAngleB(sideA, sideB, sideC);
+	angleC = CosineLawAngleC(sideA, sideB, sideC);
 
 	//prints the angles to the user
 	printf("Angle A: %.2f\n", angleA);
