@@ -38,34 +38,36 @@ int main() {
 			printf_s("Rectangle selected.\n");
 
 			//collect a corners coordinates
-			int firstEnteredCoordinates[2] = { 0, 0 };
+			int firstEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a corner on the rectangle in the form of x y:\n");
-			int* entered1stRectanglePoints = getRectanglePoints(firstEnteredCoordinates);
+			POINT point1 = getRectanglePoints(firstEnteredCoordinates);
 
 			//collect a different corners coordiantes 
-			int secondEnteredCoordinates[2] = { 0, 0 };
+			int secondEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
-			int* entered2ndRectanglePoints = getRectanglePoints(secondEnteredCoordinates);
+			POINT point2 = getRectanglePoints(secondEnteredCoordinates);
 
 			//collect a different corners coordiantes 
-			int thirdEnteredCoordinates[2] = { 0, 0 };
+			int thirdEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
-			int* entered3rdRectanglePoints = getRectanglePoints(thirdEnteredCoordinates);
+			POINT point3 = getRectanglePoints(thirdEnteredCoordinates);
 
 			//collect a different corners coordiantes 
-			int fourthEnteredCoordinates[2] = { 0, 0 };
+			int fourthEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
-			int* entered4thRectanglePoints = getRectanglePoints(fourthEnteredCoordinates);
+			POINT point4 = getRectanglePoints(fourthEnteredCoordinates);
+
+			//check to see if there are any duplicated points
+			bool duplicatePoints = arePointsSame(point1, point2, point3, point4);
 
 			//are inputs duplicats
 			// rearrange points 
 			// generate 4 lines 
 			// is it a rectangle? output no - show perimeter || yes - ouptut area && perimeter  
-			
 			break;
 		case 0:
 			continueProgram = false;
@@ -109,11 +111,11 @@ int* getTriangleSides(int* triangleSides) {
 }
 
 //This function collects and checks all 4 corners coordinates for the rectangle 
-int* getRectanglePoints(int* rectanglePoint)
+POINT getRectanglePoints(int* rectanglePoint)
 {
 	//collect the point from the user 
 	//(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
-	for (int index = 0; index < 2; index++)
+	for (int index = XARRAYINDEX; index < SIZEOFCOORDINATEARRAY; index++)
 	{
 		//check to see if the user entered a number if they did collect it if not end the program
 		if (scanf_s("%d", &rectanglePoint[index]) == 0)
@@ -122,5 +124,7 @@ int* getRectanglePoints(int* rectanglePoint)
 			exit(1); //Brodin:In the future I will change this so it will just return back to the menu loop rather than exiting the program 
 		}
 	}
-	return rectanglePoint;
+	//formulate and return the point 
+	POINT newPoint = createPoint(rectanglePoint[XARRAYINDEX], rectanglePoint[YARRAYINDEX]);
+	return newPoint;
 }

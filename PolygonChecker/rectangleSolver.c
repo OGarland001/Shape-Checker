@@ -140,3 +140,32 @@ float findRectangleArea(LINE line1, LINE line2)
 	return area;
 }
 
+//This function takes in the x and y values for a point and generate a new "point"
+POINT createPoint(int xValue, int yValue)
+{
+	POINT tempNewPoint;
+	//take the input x and y values and store them in the new point
+	tempNewPoint.x = xValue;
+	tempNewPoint.y = yValue;
+	//store undefined as the points location as we do not know the points location right away
+	strncpy_s("undefined", MAXNAMELEN, tempNewPoint.pointName, MAXNAMELEN);
+	//return a newly created point 
+	return tempNewPoint;
+}
+
+//This function takes in the 4 points and checks that they are not the same (meaning there is a change that the inputs could be a rectangle)
+bool arePointsSame(POINT one, POINT two, POINT three, POINT four)
+{
+	//are any of the x y pairs the same?
+	if (one.x == two.x && one.y == two.y ||
+		one.x == three.x && one.y == three.y ||
+		one.x == four.x && one.y == four.y)
+	{
+		//one or more of the points are the same so we return true
+		return true;
+	}
+
+	//none of the points are the same so we return false 
+	return false;
+}
+
