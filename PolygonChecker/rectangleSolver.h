@@ -7,13 +7,9 @@
 #include <stdbool.h>
 #include <math.h.>
 
-
-
 typedef struct Point {		//structure for points
 	char pointName[MAXNAMELEN];
-	int x;
-	int y;
-	int pointcenter;
+	int x, y;
 }POINT;
 
 typedef struct Line {		//structure for lines

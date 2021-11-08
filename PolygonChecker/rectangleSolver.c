@@ -50,6 +50,8 @@ LINE* generateRectangle(POINT points[])
 
 	//get center of 4 points
 	POINT pointcenter;
+	pointcenter.x = 0;
+	pointcenter.y = 0;
 	for (int i = 0; i < 4; i++) {
 		pointcenter.x += points[i].x;
 		pointcenter.y += points[i].y;
