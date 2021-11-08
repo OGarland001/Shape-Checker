@@ -151,3 +151,19 @@ POINT createPoint(int xValue, int yValue)
 	return tempNewPoint;
 }
 
+//This function takes in the 4 points and checks that they are not the same (meaning there is a change that the inputs could be a rectangle)
+bool arePointsSame(POINT one, POINT two, POINT three, POINT four)
+{
+	//are any of the x y pairs the same?
+	if (one.x == two.x && one.y == two.y ||
+		one.x == three.x && one.y == three.y ||
+		one.x == four.x && one.y == four.y)
+	{
+		//one or more of the points are the same so we return true
+		return true;
+	}
+
+	//none of the points are the same so we return false 
+	return false;
+}
+
