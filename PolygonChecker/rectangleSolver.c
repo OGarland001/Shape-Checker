@@ -138,23 +138,3 @@ float findRectangleArea(LINE line1, LINE line2)
 	return area;
 }
 
-//maybe Brodin Car and Eric work on this function together? - On Monday
-void isValidRectangle()//paramter of rectangle struct? -see not in rectangleSolver.h for disucssion on this struct
-{
-	// 1. check if lines cross (only continue through function if lines dont cross)
-	// 2. check slopes (only continue through function if valid slopes)
-	// 3. assign name/location of each point on the rectangle 
-	// 4. call car's function to setup the lines (cars function will call erics area and perimeter functions)
-	//This order is just a suggestion we can change what steps need to occur later 
-	
-	//call setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT point4)
-	//check if function return is false, if it is output not a rectangle 
-	//If function return is true continue:
-
-	//call a function (needs to be created) that will set a point to be the origin and then determine how
-	//the next 3 points are layed out in relation to that point (also will determine if the lines will cross)
-	//this function should have a return type of bool and will finish filling the point structs with proper location names 
-	//(struct is in rectangleSolver.h) and the function will return false if the lines do cross (again tell the user that a rectangle cannot be created)
-
-	//call Car's function to generate the lines (either pass each point or consider creating a rectangle struct)
-}

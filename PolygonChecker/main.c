@@ -62,9 +62,10 @@ int main() {
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
 			int* entered4thRectanglePoints = getRectanglePoints(fourthEnteredCoordinates);
 
-			//Call a fucntion that validates if the points form a rectangle 
-			isValidRectangle();
-			
+			//are inputs duplicats
+			// rearrange points 
+			// generate 4 lines 
+			// is it a rectangle? output no - show perimeter || yes - ouptut area && perimeter  
 			break;
 		case 0:
 			continueProgram = false;
