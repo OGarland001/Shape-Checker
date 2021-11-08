@@ -66,15 +66,15 @@ int main() {
 			bool duplicatePoints = arePointsSame(point1, point2, point3, point4);
 
 			//If there are no duplicates give the user the output
-			if (duplicatePoints == true)
+			if (duplicatePoints == false)
 			{
 				// rearrange points 
 				// generate 4 lines 
 				// is it a rectangle? output yes - ouptut area && perimeter  
 			}
 			
-			// is it a rectangle? output no - show perimeter ||
 			printf("You cannot have duplicated points, please try again with 4 unique points\n");
+			// is it a rectangle? output no - show perimeter ||
 			break;
 		case 0:
 			continueProgram = false;
