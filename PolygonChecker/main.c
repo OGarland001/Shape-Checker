@@ -39,25 +39,25 @@ int main() {
 			printf_s("Rectangle selected.\n");
 
 			//collect a corners coordinates
-			int firstEnteredCoordinates[2] = { 0, 0 };
+			int firstEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a corner on the rectangle in the form of x y:\n");
 			POINT point1 = getRectanglePoints(firstEnteredCoordinates);
 
 			//collect a different corners coordiantes 
-			int secondEnteredCoordinates[2] = { 0, 0 };
+			int secondEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
 			POINT point2 = getRectanglePoints(secondEnteredCoordinates);
 
 			//collect a different corners coordiantes 
-			int thirdEnteredCoordinates[2] = { 0, 0 };
+			int thirdEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
 			POINT point3 = getRectanglePoints(thirdEnteredCoordinates);
 
 			//collect a different corners coordiantes 
-			int fourthEnteredCoordinates[2] = { 0, 0 };
+			int fourthEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 			//tell the user to enter a point 
 			printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
 			POINT point4 = getRectanglePoints(fourthEnteredCoordinates);
@@ -123,7 +123,7 @@ POINT getRectanglePoints(int* rectanglePoint)
 {
 	//collect the point from the user 
 	//(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
-	for (int index = 0; index < 2; index++)
+	for (int index = XARRAYINDEX; index < SIZEOFCOORDINATEARRAY; index++)
 	{
 		//check to see if the user entered a number if they did collect it if not end the program
 		if (scanf_s("%d", &rectanglePoint[index]) == 0)
@@ -132,7 +132,7 @@ POINT getRectanglePoints(int* rectanglePoint)
 			exit(1); //Brodin:In the future I will change this so it will just return back to the menu loop rather than exiting the program 
 		}
 	}
-	//forumulate and return the point 
-	POINT newPoint = createPoint(rectanglePoint[0], rectanglePoint[1]);
+	//formulate and return the point 
+	POINT newPoint = createPoint(rectanglePoint[XARRAYINDEX], rectanglePoint[YARRAYINDEX]);
 	return newPoint;
 }
