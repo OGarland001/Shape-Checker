@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h.>
-
+#include <string.h>
 
 
 typedef struct Point {		//structure for points
@@ -27,3 +27,6 @@ float findRectangleArea(LINE, LINE);
 float findSlope(POINT, POINT);
 float findLength(LINE line);
 LINE* generateRectangle(POINT points[]);
+
+//This function takes in the x and y values for a point and generate a new "point"
+POINT createPoint(int, int);

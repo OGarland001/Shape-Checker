@@ -138,3 +138,16 @@ float findRectangleArea(LINE line1, LINE line2)
 	return area;
 }
 
+//This function takes in the x and y values for a point and generate a new "point"
+POINT createPoint(int xValue, int yValue)
+{
+	POINT tempNewPoint;
+	//take the input x and y values and store them in the new point
+	tempNewPoint.x = xValue;
+	tempNewPoint.y = yValue;
+	//store undefined as the points location as we do not know the points location right away
+	strncpy_s("undefined", MAXNAMELEN, tempNewPoint.pointName, MAXNAMELEN);
+	//return a newly created point 
+	return tempNewPoint;
+}
+
