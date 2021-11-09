@@ -63,10 +63,10 @@ int main() {
 			POINT point4 = getRectanglePoints(fourthEnteredCoordinates);
 
 			//check to see if there are any duplicated points
-			bool duplicatePoints = arePointsSame(point1, point2, point3, point4);
+			bool areDuplicatePoints = arePointsSame(point1, point2, point3, point4);
 
 			//If there are no duplicates give the user the output
-			if (duplicatePoints == false)
+			if (areDuplicatePoints == false)
 			{
 				POINT points[4];		// call generateRectangle function
 				points[0] = point1;
@@ -76,9 +76,11 @@ int main() {
 				LINE* lines = generateRectangle(points);
 				// is it a rectangle? output yes - ouptut area && perimeter  
 			}
-			
-			printf("You cannot have duplicated points, please try again with 4 unique points\n");
-			// is it a rectangle? output no - show perimeter ||
+			else
+			{
+				printf("You cannot have duplicated points, please try again with 4 unique points\n");
+				// is it a rectangle? output no - show perimeter ||
+			}
 			break;
 		case 0:
 			continueProgram = false;
