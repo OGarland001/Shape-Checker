@@ -109,14 +109,16 @@ LINE* generateRectangle(POINT points[])
 //function takes in a line, returning the line length
 float findLength(LINE line) {
 	POINT point1, point2;
-	int x1, x2, y1, y2;
+	int x1, x2, y1, y2, rise, run;
 	int length;
 	x1 = line.pointA.x;
 	y1 = line.pointA.y;
 	x2 = line.pointB.x;
 	y2 = line.pointB.y;
+	rise = abs(y2 - y1);
+	run = abs(x2 - x1);
 
-	length = abs(sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2));
+	length = sqrt(pow(rise,2) + pow(run,2));
 
 	return length;
 

@@ -75,12 +75,12 @@ int main() {
 				// is it a rectangle? output yes - ouptut area && perimeter 
 				if (validRectangle == true) {
 					int area = findRectangleArea(lines[0], lines[1]);
-					printf("The polygon is a rectangle \n the perimeter is: %d \n the area is %d", perimeter, area);
+					printf("The polygon is a rectangle \nThe perimeter is: %d \nThe area is %d", perimeter, area);
 				}
 
 				// is it a rectangle? output no - show perimeter 
 				else {
-					printf("The polygon is not a rectangle \n the perimeter is: %d \n", perimeter);
+					printf("The polygon is not a rectangle \nThe perimeter is: %d \n", perimeter);
 				}
 				 
 
