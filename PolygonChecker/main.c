@@ -76,7 +76,7 @@ int main() {
 				LINE* lines = generateRectangle(points);
 				
 				//validate rectangle based on points
-				bool validRectangle = setupValidRectanglePoints(point1, point2, point3, point4);
+				bool validRectangle = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 
 				int perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
 				// is it a rectangle? output yes - ouptut area && perimeter 
