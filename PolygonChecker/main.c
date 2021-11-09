@@ -74,12 +74,28 @@ int main() {
 				points[2] = point3;
 				points[3] = point4;
 				LINE* lines = generateRectangle(points);
-				// is it a rectangle? output yes - ouptut area && perimeter  
+				
+				//validate rectangle based on points
+				bool validRectangle = setupValidRectanglePoints(point1, point2, point3, point4);
+
+				int perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
+				// is it a rectangle? output yes - ouptut area && perimeter 
+				if (validRectangle == true) {
+					int area = findRectangleArea(lines[0], lines[1]);
+					printf("The polygon is a rectangle \n the perimeter is: %d \n the area is %d", perimeter, area);
+				}
+
+				// is it a rectangle? output no - show perimeter 
+				else {
+					printf("The polygon is not a rectangle \n the perimeter is: %d \n", perimeter);
+				}
+				 
+
 			}
+
 			else
 			{
 				printf("You cannot have duplicated points, please try again with 4 unique points\n");
-				// is it a rectangle? output no - show perimeter ||
 			}
 			break;
 		case 0:
