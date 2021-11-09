@@ -18,21 +18,8 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
-			
-			int userinput;
-			//prompt user if they would like to know the inside angles of the triangle
-			printf_s("Would you like to know the inside angles of the triangle? yes(1) or no(0)?");
-			scanf_s("%d", &userinput);
-			//if selected yes then call the angle solver function to show the angles
-			if (userinput == 1) {
-				AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			}
 
+			triangleSolver();
 			break;
 		case 2:
 			//call a function to perform all actions of case 2
@@ -83,6 +70,22 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
+void triangleSolver(void) {
+
+	printf_s("Triangle selected.\n");
+	int triangleSides[3] = { 0, 0, 0 };
+	int* triangleSidesPtr = getTriangleSides(triangleSides);
+
+	char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+	printf_s("%s\n", result);
+
+
+	if (result != "Not a triangle") {
+		AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+	}
+
+}
+
 //This function collects and checks all 4 corners coordinates for the rectangle 
 POINT getRectanglePoints(int* rectanglePoint)
 {
@@ -102,6 +105,8 @@ POINT getRectanglePoints(int* rectanglePoint)
 	return newPoint;
 }
 
+<<<<<<< HEAD
+=======
 //this function calls all the features associated with a rectangle 
 void PerformCaseTwo()
 {
@@ -135,18 +140,18 @@ void PerformCaseTwo()
 	//check to see if there are any duplicated points
 	bool areDuplicatePoints = arePointsSame(point1, point2, point3, point4);
 
-	//If there are no duplicates give the user the output
-	if (areDuplicatePoints == false)
-	{
-		POINT points[4];		// call generateRectangle function
-		points[0] = point1;
-		points[1] = point2;
-		points[2] = point3;
-		points[3] = point4;
-		LINE* lines = generateRectangle(points);
-
-		//validate rectangle based on points
-		bool validRectangle = setupValidRectanglePoints(point1, point2, point3, point4);
+			//If there are no duplicates give the user the output
+			if (areDuplicatePoints == false)
+			{
+				POINT points[4];		// call generateRectangle function
+				points[0] = point1;
+				points[1] = point2;
+				points[2] = point3;
+				points[3] = point4;
+				LINE* lines = generateRectangle(points);
+				
+				//validate rectangle based on points
+				bool validRectangle = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 
 		int perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
 		// is it a rectangle? output yes - ouptut area && perimeter 
@@ -166,3 +171,4 @@ void PerformCaseTwo()
 		printf("You cannot have duplicated points, please try again with 4 unique points\n");
 	}
 }
+

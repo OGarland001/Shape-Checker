@@ -19,7 +19,7 @@ typedef struct Line {		//structure for lines
 	POINT pointB;
 }LINE;
 
-bool setupValidRectanglePoints(POINT, POINT, POINT, POINT);
+bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 float findRectanglePerimeter(LINE, LINE, LINE, LINE);
 float findRectangleArea(LINE, LINE);
 float findSlope(POINT, POINT);
