@@ -24,14 +24,7 @@ int main() {
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
 			
-			int userinput;
-			//prompt user if they would like to know the inside angles of the triangle
-			printf_s("Would you like to know the inside angles of the triangle? yes(1) or no(0)?");
-			scanf_s("%d", &userinput);
-			//if selected yes then call the angle solver function to show the angles
-			if (userinput == 1) {
 				AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			}
 
 			break;
 		case 2:
@@ -118,8 +111,7 @@ int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: \n");
 	for (int i = 0; i < 3; i++)
 	{
-		printf("%d. ", i + 1);
-		scanf_s("%d\n", &triangleSides[i]);
+		scanf_s("%d", &triangleSides[i]);
 	}
 	return triangleSides;
 }
