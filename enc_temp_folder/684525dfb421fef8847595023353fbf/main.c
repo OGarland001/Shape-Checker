@@ -68,12 +68,8 @@ int main() {
 			//If there are no duplicates give the user the output
 			if (duplicatePoints == false)
 			{
-				POINT points[4];		// call generateRectangle function
-				points[0] = point1;
-				points[1] = point2;
-				points[2] = point3;
-				points[3] = point4;
-				LINE* lines = generateRectangle(points);
+				// rearrange points 
+				// generate 4 lines 
 				// is it a rectangle? output yes - ouptut area && perimeter  
 			}
 			
