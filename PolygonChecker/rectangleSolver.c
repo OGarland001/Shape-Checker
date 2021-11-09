@@ -1,17 +1,18 @@
 #include "rectangleSolver.h"
 
 //validate by receiving slope of side length 1 and side length 2 and checking for perpendicularity
-bool setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT point4)
+bool setupValidRectanglePoints(LINE line1, LINE line2, LINE line3, LINE line4)
 {
 	bool valid = true;
 	float slope1, slope2, slope3, slope4;
 
 	//Use a helper function to convert points to slopes
 
-	slope1 = findSlope(point1, point2);
-	slope2 = findSlope(point2, point3);
-	slope3 = findSlope(point3, point4);
-	slope4 = findSlope(point4, point1);
+	slope1 = findSlope(line1.pointA, line1.pointB);
+	slope2 = findSlope(line2.pointA, line2.pointB);
+	slope3 = findSlope(line3.pointA, line3.pointB);
+	slope4 = findSlope(line4.pointA, line4.pointB);
+
 	//Two lines which are perpendicular to each other are negative reciprocals, so their product would be -1
 
 	if (slope1 * slope2 != -1) {
@@ -26,20 +27,40 @@ bool setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT p
 	if (slope4 * slope1 != -1) {
 		valid = false;
 	}
+	//Special case for horizontal/vertical lines (slope 0 and slope undefined(0))
+	if (slope1 == 0 && slope2 == 0 && slope3 == 0 && slope4 == 0)
+		valid = true;
+
+	//Special case if "rectangle" is a line
+	if (line1.pointA.x == line2.pointA.x == line3.pointA.x == line4.pointA.x) {
+		valid = false;
+	}
+	if (line1.pointA.y == line2.pointA.y == line3.pointA.y == line4.pointA.y) {
+		valid = false;
+	}
+
 	return valid;
 }
 
 //function takes in two points, returns the slope
 float findSlope(POINT point1, POINT point2) {
-	int x1, x2, y1, y2;
+	float x1, x2, y1, y2;
 
-	x1 = point1.x;
-	y1 = point1.y;
-	x2 = point2.x;
-	y2 = point2.y;
+	float slope;
+	//use float versions of points in order to find slope as a float
 
-	float slope = (y2 - y1) / (x2 - x1);
+	x1 = (float)point1.x;
+	y1 = (float)point1.y;
+	x2 = (float)point2.x;
+	y2 = (float)point2.y;
 
+	//if x2-x1, slope is undefined (will use 0 instead)
+	if ((x2 - x1) == 0) {
+		slope = 0; //!!!setting undefined to 0 will have incorrect inputs if polygon is a line!!!
+	}
+	else {
+		slope = (y2 - y1) / (x2 - x1);
+	}
 	return slope;
 
 }
@@ -102,14 +123,16 @@ LINE* generateRectangle(POINT points[])
 //function takes in a line, returning the line length
 float findLength(LINE line) {
 	POINT point1, point2;
-	int x1, x2, y1, y2; //
+	int x1, x2, y1, y2, rise, run;
 	int length;
 	x1 = line.pointA.x;
 	y1 = line.pointA.y;
 	x2 = line.pointB.x;
 	y2 = line.pointB.y;
+	rise = y2 - y1;
+	run = x2 - x1;
 
-	length = abs(sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2));
+	length = sqrt(pow(run,2) + pow(rise, 2));
 
 	return length;
 
