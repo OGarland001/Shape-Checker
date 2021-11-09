@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
 
@@ -8,6 +9,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
 	if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
 		result = "Not a triangle";
+		
 	}
 	else if (side1 == side2 && side1 == side3) {
 		result = "Equilateral triangle";
@@ -39,4 +41,8 @@ void AngleSolver(int sideA, int sideB, int sideC) {
 	printf("Angle C: %.2f\n", angleC);
 
 }
+
+
+
+
 

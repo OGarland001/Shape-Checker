@@ -18,14 +18,7 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
-			
-				AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-
+			triangleSolver();
 			break;
 		case 2:
 			//tell the user that the selected the rectangle functionality 
@@ -116,6 +109,22 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
+void triangleSolver(void) {
+
+	printf_s("Triangle selected.\n");
+	int triangleSides[3] = { 0, 0, 0 };
+	int* triangleSidesPtr = getTriangleSides(triangleSides);
+
+	char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+	printf_s("%s\n", result);
+
+
+	if (result != "Not a triangle") {
+		AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+	}
+
+}
+
 //This function collects and checks all 4 corners coordinates for the rectangle 
 POINT getRectanglePoints(int* rectanglePoint)
 {
@@ -134,3 +143,4 @@ POINT getRectanglePoints(int* rectanglePoint)
 	POINT newPoint = createPoint(rectanglePoint[XARRAYINDEX], rectanglePoint[YARRAYINDEX]);
 	return newPoint;
 }
+
