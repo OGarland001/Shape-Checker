@@ -12,6 +12,7 @@ bool setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT p
 	slope2 = findSlope(point2, point3);
 	slope3 = findSlope(point3, point4);
 	slope4 = findSlope(point4, point1);
+
 	//Two lines which are perpendicular to each other are negative reciprocals, so their product would be -1
 
 	if (slope1 * slope2 != -1) {
@@ -32,13 +33,19 @@ bool setupValidRectanglePoints(POINT point1, POINT point2, POINT point3, POINT p
 //function takes in two points, returns the slope
 float findSlope(POINT point1, POINT point2) {
 	int x1, x2, y1, y2;
-
+	float slope;
 	x1 = point1.x;
 	y1 = point1.y;
 	x2 = point2.x;
 	y2 = point2.y;
 
-	float slope = (y2 - y1) / (x2 - x1);
+	//if x2-x1, slope is undefined (will use 0 instead)
+	if ((x2 - x1) == 0) {
+		slope = 0;
+	}
+	else {
+		slope = (y2 - y1) / (x2 - x1);
+	}
 
 	return slope;
 
@@ -102,7 +109,7 @@ LINE* generateRectangle(POINT points[])
 //function takes in a line, returning the line length
 float findLength(LINE line) {
 	POINT point1, point2;
-	int x1, x2, y1, y2; //
+	int x1, x2, y1, y2;
 	int length;
 	x1 = line.pointA.x;
 	y1 = line.pointA.y;
