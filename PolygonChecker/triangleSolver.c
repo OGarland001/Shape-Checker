@@ -46,9 +46,9 @@ void AngleSolver(int sideA, int sideB, int sideC) {
 	printf("Angle C: %.2f\n", angleC);
 
 	//gives user idea of where the angles are from the side lengths they inputted
-	printf("Angle A, is directly across from side A");
-	printf("Angle B, is directly across from side B");
-	printf("Angle C, is directly across from side C");
+	printf("Angle A, is directly across from side A\n");
+	printf("Angle B, is directly across from side B\n");
+	printf("Angle C, is directly across from side C\n");
 
 
 }

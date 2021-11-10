@@ -107,10 +107,6 @@ POINT getRectanglePoints(int* rectanglePoint)
 	return newPoint;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> b09c0f8c9b47f288446283d2f7d4facd93a51753
 //this function calls all the features associated with a rectangle 
 void PerformCaseTwo()
 {
