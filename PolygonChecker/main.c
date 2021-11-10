@@ -18,6 +18,7 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
+			//call a function to perform all actions of case 1
 			triangleSolver();
 			break;
 		case 2:
@@ -25,6 +26,7 @@ int main() {
 			PerformCaseTwo();
 			break;
 		case 0:
+			//the users wants the quit so dont loop anymore 
 			continueProgram = false;
 			break;
 		default:
@@ -35,6 +37,7 @@ int main() {
 	return 0;
 }
 
+//This function prints out the welcome text
 void printWelcome() {
 	printf_s("\n");
 	printf_s(" **********************\n");
@@ -43,6 +46,7 @@ void printWelcome() {
 	printf_s(" **********************\n");
 }
 
+//This function prints out the selection menu and collect a valid selection 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
 	printf_s("2. Rectangle\n");
@@ -50,6 +54,7 @@ int printShapeMenu() {
 
 	int shapeChoice;
 
+	//collect the users selection and check that it is valid
 	printf_s("Enter number: ");
 	if (scanf_s("%d", &shapeChoice) == 0)
 	{
@@ -59,6 +64,7 @@ int printShapeMenu() {
 	return shapeChoice;
 }
 
+//this function collects and checks all 3 side lengths of the triangle 
 int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle in order of ABC: \n");
 	for (int i = 0; i < 3; i++)
@@ -72,6 +78,7 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
+//this function calls all the features associated with a triangle 
 void triangleSolver(void) {
 
 	printf_s("Triangle selected.\n");
@@ -166,6 +173,7 @@ void PerformCaseTwo()
 			printf("The polygon is not a rectangle \nThe perimeter is: %d \n", perimeter);
 		}
 	}
+	//there are duplicated points so tell the user that they cannot have duplicate points 
 	else
 	{
 		printf("You cannot have duplicated points, please try again with 4 unique points\n");
