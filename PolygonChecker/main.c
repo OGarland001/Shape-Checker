@@ -102,12 +102,23 @@ POINT getRectanglePoints(int* rectanglePoint)
 	//(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
 	for (int index = XARRAYINDEX; index < SIZEOFCOORDINATEARRAY; index++)
 	{
-		//check to see if the user entered a number if they did collect it if not end the program
-		if (scanf_s("%d", &rectanglePoint[index]) == 0)
+		bool shouldContinue = true;
+		do
 		{
-			printf("Invalid input\n");
-			exit(1);
-		}
+			//check to see if the user entered a number if they did collect it if not collect the point again
+			if (scanf_s("%d", &rectanglePoint[index]) == 0)
+			{
+				printf("Invalid input try again\n");
+				printf_s("Please re-enter the coordinates of the corner on the rectangle in the form of x y:\n");
+				while (getchar() != '\n'); //clean leftover "bad" data from stdin buffer 
+			}
+			//the input is not bad so we can continue 
+			else
+			{
+				shouldContinue = false;
+			}
+		} while (shouldContinue == true);
+		
 	}
 	//formulate and return the point 
 	POINT newPoint = createPoint(rectanglePoint[XARRAYINDEX], rectanglePoint[YARRAYINDEX]);
