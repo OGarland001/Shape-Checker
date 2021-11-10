@@ -10,20 +10,20 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	//This is following the triangle inequality theorem(to figure out if it is a possible triangle or not)
 	if (((side1 + side2) > side3) && ((side3 + side2) > side1) && ((side3 + side1) > side2)) {
 
-	 if (side1 == side2 && side1 == side3) {
-		result = "Equilateral triangle";
-	}
-	else if ((side1 == side2 && side1 != side3) ||
-		(side1 == side3 && side1 != side2))
-	{
-		result = "Isosceles triangle";
-	}
-	else {
-		result = "Scalene triangle";
-	}
+		if (side1 == side2 && side1 == side3) {
+			result = "Equilateral triangle";
+		}
+		else if ((side1 == side2 && side1 != side3) ||
+			(side1 == side3 && side1 != side2))
+		{
+			result = "Isosceles triangle";
+		}
+		else {
+			result = "Scalene triangle";
+		}
 
 	}
-	else{
+	else {
 		result = "Not a triangle";
 
 	}

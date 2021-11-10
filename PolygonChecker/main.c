@@ -63,11 +63,21 @@ int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle in order of ABC: \n");
 	for (int i = 0; i < 3; i++)
 	{
-		if (scanf_s("%d", &triangleSides[i]) == 0)
-		{
-			printf("Invalid input\n");
-			exit(1);
-		}
+		bool shouldContinue = true;
+		do {
+			if (scanf_s("%d", &triangleSides[i]) == 0)
+			{
+				printf("Invalid input try again\n");
+				printf("Please re-enter the side length again\n");
+				while (getchar() != '\n');
+
+			}
+			else {
+				shouldContinue = false;
+			}
+
+		} while (shouldContinue == true);
+
 	}
 	return triangleSides;
 }
@@ -149,13 +159,13 @@ void PerformCaseTwo()
 		points[2] = point3;
 		points[3] = point4;
 		LINE* lines = generateRectangle(points);
-				
+
 		//validate rectangle based on points
 		bool validRectangle = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 
 		int perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
 		// is it a rectangle? output yes - ouptut area && perimeter 
-		if (validRectangle == true) 
+		if (validRectangle == true)
 		{
 			int area = findRectangleArea(lines[0], lines[1]);
 			printf("The polygon is a rectangle \nThe perimeter is: %d \nThe area is %d", perimeter, area);
