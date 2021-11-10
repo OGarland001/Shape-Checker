@@ -18,7 +18,6 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-
 			triangleSolver();
 			break;
 		case 2:
@@ -52,8 +51,11 @@ int printShapeMenu() {
 	int shapeChoice;
 
 	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
-
+	if (scanf_s("%d", &shapeChoice) == 0)
+	{
+		shapeChoice = -1;
+		while (getchar() != '\n'); //clean leftover "bad" data from stdin buffer 
+	}
 	return shapeChoice;
 }
 
@@ -105,8 +107,6 @@ POINT getRectanglePoints(int* rectanglePoint)
 	return newPoint;
 }
 
-<<<<<<< HEAD
-=======
 //this function calls all the features associated with a rectangle 
 void PerformCaseTwo()
 {
@@ -140,18 +140,18 @@ void PerformCaseTwo()
 	//check to see if there are any duplicated points
 	bool areDuplicatePoints = arePointsSame(point1, point2, point3, point4);
 
-			//If there are no duplicates give the user the output
-			if (areDuplicatePoints == false)
-			{
-				POINT points[4];		// call generateRectangle function
-				points[0] = point1;
-				points[1] = point2;
-				points[2] = point3;
-				points[3] = point4;
-				LINE* lines = generateRectangle(points);
+	//If there are no duplicates give the user the output
+	if (areDuplicatePoints == false)
+	{
+		POINT points[4];		// call generateRectangle function
+		points[0] = point1;
+		points[1] = point2;
+		points[2] = point3;
+		points[3] = point4;
+		LINE* lines = generateRectangle(points);
 				
-				//validate rectangle based on points
-				bool validRectangle = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+		//validate rectangle based on points
+		bool validRectangle = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 
 		int perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
 		// is it a rectangle? output yes - ouptut area && perimeter 
