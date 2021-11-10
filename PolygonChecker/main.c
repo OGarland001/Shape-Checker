@@ -58,7 +58,7 @@ int printShapeMenu() {
 }
 
 int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: \n");
+	printf_s("Enter the three sides of the triangle in order of ABC: \n");
 	for (int i = 0; i < 3; i++)
 	{
 		if (scanf_s("%d", &triangleSides[i]) == 0)
@@ -105,8 +105,7 @@ POINT getRectanglePoints(int* rectanglePoint)
 	return newPoint;
 }
 
-<<<<<<< HEAD
-=======
+
 //this function calls all the features associated with a rectangle 
 void PerformCaseTwo()
 {

@@ -15,7 +15,7 @@ double CosineLawAngleA(double sideA, double sideB, double sideC) {
 }
 double CosineLawAngleB(double sideA, double sideB, double sideC) {
 	double radB, Denominator, Numerator, Result;
-	// this function finds the angle A using the rearranged formula of CosineLaw
+	// this function finds the angle B using the rearranged formula of CosineLaw
 	Numerator = (pow(sideA, 2) + pow(sideC, 2) - pow(sideB, 2));
 	Denominator = (2 * sideA * sideC);
 	radB = acos(Numerator / Denominator);
@@ -26,7 +26,7 @@ double CosineLawAngleB(double sideA, double sideB, double sideC) {
 }
 double CosineLawAngleC(double sideA, double sideB, double sideC) {
 	double radC, Denominator, Numerator, Result;
-	// this function finds the angle A using the rearranged formula of CosineLaw
+	// this function finds the angle C using the rearranged formula of CosineLaw
 	Numerator = (pow(sideB, 2) + pow(sideA, 2) - pow(sideC, 2));
 	Denominator = (2 * sideB * sideA);
 	radC = acos(Numerator / Denominator);
