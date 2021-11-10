@@ -131,7 +131,7 @@ float findLength(LINE line) {
 	rise = y2 - y1;
 	run = x2 - x1;
 
-	length = sqrt(pow(run,2) + pow(rise, 2));
+	length = sqrt(pow(run, 2) + pow(rise, 2));
 
 	return length;
 
@@ -170,7 +170,7 @@ POINT createPoint(int xValue, int yValue)
 	tempNewPoint.x = xValue;
 	tempNewPoint.y = yValue;
 	//store undefined as the points location as we do not know the points location right away
-	strncpy_s(tempNewPoint.pointName, MAXNAMELEN,"undefined", MAXNAMELEN);
+	strncpy_s(tempNewPoint.pointName, MAXNAMELEN, "undefined", MAXNAMELEN);
 	//return a newly created point 
 	return tempNewPoint;
 }

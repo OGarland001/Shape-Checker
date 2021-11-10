@@ -10,20 +10,20 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	//This is following the triangle inequality theorem(to figure out if it is a possible triangle or not)
 	if (((side1 + side2) > side3) && ((side3 + side2) > side1) && ((side3 + side1) > side2)) {
 
-	 if (side1 == side2 && side1 == side3) {
-		result = "Equilateral triangle";
-	}
-	else if ((side1 == side2 && side1 != side3) ||
-		(side1 == side3 && side1 != side2))
-	{
-		result = "Isosceles triangle";
-	}
-	else {
-		result = "Scalene triangle";
-	}
+		if (side1 == side2 && side1 == side3) {
+			result = "Equilateral triangle";
+		}
+		else if ((side1 == side2 && side1 != side3) ||
+			(side1 == side3 && side1 != side2))
+		{
+			result = "Isosceles triangle";
+		}
+		else {
+			result = "Scalene triangle";
+		}
 
 	}
-	else{
+	else {
 		result = "Not a triangle";
 
 	}
@@ -46,9 +46,9 @@ void AngleSolver(int sideA, int sideB, int sideC) {
 	printf("Angle C: %.2f\n", angleC);
 
 	//gives user idea of where the angles are from the side lengths they inputted
-	printf("Angle A, is directly across from side A");
-	printf("Angle B, is directly across from side B");
-	printf("Angle C, is directly across from side C");
+	printf("Angle A, is directly across from side A\n");
+	printf("Angle B, is directly across from side B\n");
+	printf("Angle C, is directly across from side C\n");
 
 
 }
