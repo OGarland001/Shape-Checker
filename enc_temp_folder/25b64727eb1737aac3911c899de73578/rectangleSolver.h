@@ -24,7 +24,6 @@ float findRectanglePerimeter(LINE, LINE, LINE, LINE);
 float findRectangleArea(LINE, LINE);
 float findSlope(POINT, POINT);
 float findLength(LINE line);
-//This function rearranges the points then forms 4 lines to generate a rectangle (no lines are crossed)
 LINE* generateRectangle(POINT points[]);
 //This function takes in the x and y values for a point and generate a new "point"
 POINT createPoint(int, int);

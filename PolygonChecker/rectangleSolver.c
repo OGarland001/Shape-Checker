@@ -82,7 +82,7 @@ LINE* generateRectangle(POINT points[])
 	//get angles
 	double angles[4];
 	for (int i = 0; i < 4; i++) {
-		angles[i] = atan2(points[i].y - pointcenter.y, points[i].x - pointcenter.x);
+		angles[i] = atan2(points[i].y - pointcenter.y, points[i].x - pointcenter.x); //use of atan2 to calculate the angles from each point to the center
 	}
 
 	//sort points
