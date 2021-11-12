@@ -196,7 +196,7 @@ void PerformCaseTwo()
 			slope2 = findSlope(lines[1].pointA, lines[1].pointB);
 			slope3 = findSlope(lines[2].pointA, lines[2].pointB);
 			slope4 = findSlope(lines[3].pointA, lines[3].pointB);
-			if (slope1 == slope2 == slope3 == slope4) {
+			if (slope1 == slope2 == slope3 == slope4 ) {
 				printf("The polygon is a line, a line does not have a perimeter");
 			}
 			else {
