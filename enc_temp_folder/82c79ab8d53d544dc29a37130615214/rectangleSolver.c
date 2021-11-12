@@ -27,17 +27,23 @@ bool setupValidRectanglePoints(LINE line1, LINE line2, LINE line3, LINE line4)
 	if (slope4 * slope1 != -1) {
 		valid = false;
 	}
-
 	//Special case if "rectangle" is a line
 	if (slope1 == slope2 == slope3 == slope4) {
 		valid = false;
 	}
-
+	if (line1.pointA.y == line2.pointA.y == line3.pointA.y == line4.pointA.y) {
+		valid = false;
+	}
+	if (line1.pointA.x == line2.pointA.x == line3.pointA.x == line4.pointA.x) {
+		valid = false;
+	}
 	//Special case for horizontal/vertical lines (slope 0 and slope undefined(0))
 	if (slope1 == 0 && slope2 == 0 && slope3 == 0 && slope4 == 0)
 		valid = true;
 
 	
+	
+
 	return valid;
 }
 
@@ -131,7 +137,7 @@ float findLength(LINE line) {
 	rise = y2 - y1;
 	run = x2 - x1;
 
-	length = sqrt(pow(run, 2) + pow(rise, 2));
+	length = sqrt(pow(run,2) + pow(rise, 2));
 
 	return length;
 
@@ -170,7 +176,7 @@ POINT createPoint(int xValue, int yValue)
 	tempNewPoint.x = xValue;
 	tempNewPoint.y = yValue;
 	//store undefined as the points location as we do not know the points location right away
-	strncpy_s(tempNewPoint.pointName, MAXNAMELEN, "undefined", MAXNAMELEN);
+	strncpy_s(tempNewPoint.pointName, MAXNAMELEN,"undefined", MAXNAMELEN);
 	//return a newly created point 
 	return tempNewPoint;
 }
