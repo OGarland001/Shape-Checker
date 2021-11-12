@@ -193,7 +193,17 @@ void PerformCaseTwo()
 		// is it a rectangle? output no - show perimeter 
 		else
 		{
-			printf("The polygon is not a rectangle \nThe perimeter is: %d \n", perimeter);
+			float slope1, slope2, slope3, slope4;
+			slope1 = findSlope(lines[0].pointA, lines[0].pointB);
+			slope2 = findSlope(lines[1].pointA, lines[1].pointB);
+			slope3 = findSlope(lines[2].pointA, lines[2].pointB);
+			slope4 = findSlope(lines[3].pointA, lines[3].pointB);
+			if (slope1 == slope2 == slope3 == slope4) {
+				printf("The polygon is a line, a line does not have a perimeter");
+			}
+			else {
+				printf("The polygon is not a rectangle \nThe perimeter is: %d \n", perimeter);
+			}
 		}
 	}
 	//there are duplicated points so tell the user that they cannot have duplicate points 
