@@ -19,6 +19,7 @@ typedef struct Line {		//structure for lines
 	POINT pointB;
 }LINE;
 
+//Validates rectangle points, returning a valid rectangle
 bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 //This function outputs the perimeter of a polygon given 4 lines
 float findRectanglePerimeter(LINE, LINE, LINE, LINE);

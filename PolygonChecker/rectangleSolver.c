@@ -14,8 +14,8 @@ bool setupValidRectanglePoints(LINE line1, LINE line2, LINE line3, LINE line4)
 	slope4 = findSlope(line4.pointA, line4.pointB);
 
 	//Rectangle is a horizontal or vertical line
-	if (line1.pointA.x == line2.pointA.x == line3.pointA.x == line4.pointA.x ||
-		line1.pointA.y == line2.pointA.y == line3.pointA.y == line4.pointA.y) {
+	if ((line1.pointA.x == line2.pointA.x == line3.pointA.x == line4.pointA.x ||
+		line1.pointA.y == line2.pointA.y == line3.pointA.y == line4.pointA.y) && slope1 == slope2 == slope3 == slope4) {
 		valid = false;
 	}
 	else {
@@ -33,7 +33,6 @@ bool setupValidRectanglePoints(LINE line1, LINE line2, LINE line3, LINE line4)
 		if (slope4 * slope1 != -1) {
 			valid = false;
 		}
-
 
 			//Special case for rectangle built with horizontal/vertical lines (slope 0 and x2-x1 = 0 (undefined))
 		if (slope1 == 0 && (line2.pointB.x - line2.pointA.x == 0 && line2.pointB.y != line2.pointA.y) && //slope1 & slope3 horizontal, slope2 and slope4 vertical
