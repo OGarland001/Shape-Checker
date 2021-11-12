@@ -35,7 +35,7 @@ void AngleSolver(int sideA, int sideB, int sideC) {
 	double RadianA, RadianB, RadianC, RadianAD;
 	double angleA, angleB, angleC;
 
-
+	//calculates the angles using the cosine law formula
 	angleA = CosineLawAngleA(sideA, sideB, sideC);
 	angleB = CosineLawAngleB(sideA, sideB, sideC);
 	angleC = CosineLawAngleC(sideA, sideB, sideC);

@@ -91,14 +91,16 @@ int* getTriangleSides(int* triangleSides) {
 //this function calls all the features associated with a triangle 
 void triangleSolver(void) {
 
+	//gets sides from user
 	printf_s("Triangle selected.\n");
 	int triangleSides[3] = { 0, 0, 0 };
 	int* triangleSidesPtr = getTriangleSides(triangleSides);
 
+	//analyzeTriangle and output the type
 	char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 	printf_s("%s\n", result);
 
-
+	//calculates only triangles that have been given a triangle type
 	if (result != "Not a triangle") {
 		AngleSolver(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 	}
@@ -196,7 +198,7 @@ void PerformCaseTwo()
 			slope2 = findSlope(lines[1].pointA, lines[1].pointB);
 			slope3 = findSlope(lines[2].pointA, lines[2].pointB);
 			slope4 = findSlope(lines[3].pointA, lines[3].pointB);
-			if (slope1 == slope2 == slope3 == slope4) {
+			if (slope1 == slope2 == slope3 == slope4 ) {
 				printf("The polygon is a line, a line does not have a perimeter");
 			}
 			else {
