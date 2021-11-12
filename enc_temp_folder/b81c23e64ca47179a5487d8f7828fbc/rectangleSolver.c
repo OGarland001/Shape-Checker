@@ -47,11 +47,11 @@ bool setupValidRectanglePoints(LINE line1, LINE line2, LINE line3, LINE line4)
 		valid = true;
 	}
 
-	if ((line1.pointA.x == line2.pointA.x == line3.pointA.x == line4.pointA.x) && (line1.pointA.y != line2.pointA.y != line3.pointA.y != line4.pointA.y)) {
+	if ((line1.pointA.x == line2.pointA.x == line3.pointA.x == line4.pointA.x) && (line1.pointA.y != line2.pointA.y != line3.pointA.y != line4.pointA.y) == true) {
 		valid = false; //rectangle is a vertical line
 	}
 
-	if ((line1.pointA.x != line2.pointA.x != line3.pointA.x != line4.pointA.x) && (line1.pointA.y == line2.pointA.y == line3.pointA.y == line4.pointA.y)) {
+	if ((line1.pointA.x != line2.pointA.x != line3.pointA.x != line4.pointA.x) && (line1.pointA.y == line2.pointA.y == line3.pointA.y == line4.pointA.y) == true) {
 		valid = false; //rectangle is a horizontal line
 	
 	}
