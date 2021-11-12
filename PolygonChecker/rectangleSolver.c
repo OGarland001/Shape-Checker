@@ -190,6 +190,7 @@ bool arePointsSame(POINT one, POINT two, POINT three, POINT four)
 		one.x == three.x && one.y == three.y ||
 		one.x == four.x && one.y == four.y ||
 		two.x == three.x && two.y == three.y ||
+		two.x == four.x && two.y == four.y ||
 		three.x == four.x && three.y == four.y)
 	{
 		//one or more of the points are the same so we return true
