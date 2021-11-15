@@ -99,8 +99,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;C:\Users\oweng\Downloads\CSCN71020_Group2\CSCN71020_Group2\PolygonChecker\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>main.obj;triangleSolver.obj;CosineLaw.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Brodin\Documents\Computer Science\Year 1\Semester 1\Software Implementation\Group Project\PolygonChecker\x64;$(VCInstallDir)UnitTest\lib;C:\Users\oweng\Downloads\CSCN71020_Group2\CSCN71020_Group2\PolygonChecker\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>main.obj;CosineLaw.obj;triangleSolver.obj;rectangleSolver.obj</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -115,7 +115,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Brodin\Documents\Computer Science\Year 1\Semester 1\Software Implementation\Group Project\PolygonChecker\x64;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>main.obj;CosineLaw.obj;triangleSolver.obj;rectangleSolver.obj</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
