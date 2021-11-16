@@ -1,23 +1,10 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-<<<<<<< HEAD
-#include <stdbool.h>
-#include "..\\PolygonChecker\\main.h"
-#include "..\\PolygonChecker\\triangleSolver.h"
-#include "..\\PolygonChecker\\rectangleSolver.h"
+#include "..\PolygonChecker\triangleSolver.h"
 
-=======
-//#include "..\PolygonChecker\rectangleSolver.h"
-
-extern "C" char* analyzeTriangle(int, int, int);
-extern "C" void AngleSolver(int, int, int);
-extern "C" double CosineLawAngleA(int, int, int);
-extern "C" double CosineLawAngleB(int, int, int);
-extern "C" double CosineLawAngleC(int, int, int);
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" LINE* generateRectangle(POINT[]);
->>>>>>> 1318d75b95fcf5780d233d5796aab873f838ea05
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -27,18 +14,79 @@ namespace PolygonCheckerTesting
 	{
 	public:
 
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(TypeOfTriangleTest1)
 		{
-		
+			//proper input, output isosceles
+			//analyzeTriangle(60,60,80) 
+			char* Result;
+			Result = analyzeTriangle(60, 60, 80);
+			Assert::AreEqual("Isosceles triangle", Result);
+
 		}
+		TEST_METHOD(TypeOfTriangleTest2)
+		{
+			//proper input, output equailateral triangle
+			//analyzeTriangle(60,60,60) 
+			char* Result;
+			Result = analyzeTriangle(60, 60, 60);
+			Assert::AreEqual("Equilateral triangle", Result);
+
+		}
+		TEST_METHOD(TypeOfTriangleTest3)
+		{
+			//improper input, output not triangle
+			//analyzeTriangle(0,0,0) 
+			char* Result;
+			Result = analyzeTriangle(0, 0, 0);
+			Assert::AreEqual("Not a triangle", Result);
+		}
+		TEST_METHOD(TypeOfTriangleTest4)
+		{
+			//improper input, output not triangle
+			//analyzeTriangle(-10,-2,11) 
+			char* Result;
+			Result = analyzeTriangle(-10, -2, 11);
+			Assert::AreEqual("Not a triangle", Result);
+
+		}
+		TEST_METHOD(TypeOfTriangleTest5)
+		{
+			//proper input, output scalene triangle
+			//analyzeTriangle(7,12,15) 
+			char* Result;
+			Result = analyzeTriangle(7, 12, 15);
+			Assert::AreEqual("Scalene triangle", Result);
+
+		}
+
 	};
 	TEST_CLASS(TriangleInsideAngleFunctionality)
 	{
 	public:
 
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(InsideAngleATest1)
 		{
+			//proper Input, output 48.19
+			double Result = CosineLawAngleA(60, 60, 80);
+			Assert::AreEqual(48.19, Result);
 		}
+		TEST_METHOD(InsideAngleATest2)
+		{
+
+		}
+		TEST_METHOD(InsideAngleATest3)
+		{
+
+		}
+		TEST_METHOD(InsideAngleATest4)
+		{
+
+		}
+		TEST_METHOD(InsideAngleATest5)
+		{
+
+		}
+	
 	};
 	TEST_CLASS(FourPointsFunctionality)
 	{
