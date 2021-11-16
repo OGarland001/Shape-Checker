@@ -1,13 +1,9 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-extern "C" char* analyzeTriangle(int, int, int);
-extern "C" void AngleSolver(int, int, int);
-extern "C" double CosineLawAngleA(int, int, int);
-extern "C" double CosineLawAngleB(int, int, int);
-extern "C" double CosineLawAngleC(int, int, int);
-extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
-
-
+#include <stdbool.h>
+#include "..\\PolygonChecker\\main.h"
+#include "..\\PolygonChecker\\triangleSolver.h"
+#include "..\\PolygonChecker\\rectangleSolver.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -20,6 +16,7 @@ namespace PolygonCheckerTesting
 		
 		TEST_METHOD(TestMethod1)
 		{
+		
 		}
 	};
 }
