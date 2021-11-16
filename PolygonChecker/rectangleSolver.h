@@ -30,7 +30,7 @@ float findSlope(POINT, POINT);
 //This function calculates the length of a line
 float findLength(LINE line);
 //This function rearranges the points then forms 4 lines to generate a rectangle (no lines are crossed)
-LINE* generateRectangle(POINT points[]);
+LINE* generateRectangle(POINT[]);
 //This function takes in the x and y values for a point and generate a new "point"
 POINT createPoint(int, int);
 //This function takes in the 4 points and checks that they are not the same (meaning there is a change that the inputs could be a rectangle)
