@@ -1,12 +1,10 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-<<<<<<< HEAD
 #include <stdbool.h>
 #include "..\\PolygonChecker\\main.h"
 #include "..\\PolygonChecker\\triangleSolver.h"
 #include "..\\PolygonChecker\\rectangleSolver.h"
 
-=======
 //#include "..\PolygonChecker\rectangleSolver.h"
 
 extern "C" char* analyzeTriangle(int, int, int);
@@ -18,7 +16,6 @@ extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 extern "C" LINE* generateRectangle(POINT[]);
->>>>>>> 1318d75b95fcf5780d233d5796aab873f838ea05
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
