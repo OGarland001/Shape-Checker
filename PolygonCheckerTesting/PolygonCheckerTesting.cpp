@@ -16,6 +16,7 @@ extern "C" double CosineLawAngleB(int, int, int);
 extern "C" double CosineLawAngleC(int, int, int);
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
+extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 extern "C" LINE* generateRectangle(POINT[]);
 >>>>>>> 1318d75b95fcf5780d233d5796aab873f838ea05
 
@@ -43,7 +44,33 @@ namespace PolygonCheckerTesting
 	TEST_CLASS(FourPointsFunctionality)
 	{
 	public:
+		TEST_METHOD(setupValidRectanglePoints_SquareCheck) //validate rectangle for a square
+		{
+			LINE lines[4];
+			
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 1;
+			lines[0].pointB.y = 2;
+			
+			lines[1].pointA.x = 1;
+			lines[1].pointA.y = 2;
+			lines[1].pointB.x = 2;
+			lines[1].pointB.y = 2;
 
+			lines[2].pointA.x = 2;
+			lines[2].pointA.y = 2;
+			lines[2].pointB.x = 2;
+			lines[2].pointB.y = 1;
+
+			lines[3].pointA.x = 2;
+			lines[3].pointA.y = 1;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(true, valid);
+		}
 		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
 		{
 			POINT points[4];
