@@ -1,24 +1,14 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-<<<<<<< HEAD
 #include <stdio.h>
 #include <stdbool.h>
 
-
-
-extern "C" char* analyzeTriangle(int a, int b, int c);
-extern "C" double CosineLawAngleA(double a, double b, double c);
-extern "C" double CosineLawAngleB(double a, double b, double c);
-extern "C" double CosineLawAngleC(double a, double b, double c);
-=======
-#include <stdbool.h>
 
 extern "C" char* analyzeTriangle(int, int, int);
 extern "C" void AngleSolver(int, int, int);
 extern "C" double CosineLawAngleA(int, int, int);
 extern "C" double CosineLawAngleB(int, int, int);
 extern "C" double CosineLawAngleC(int, int, int);
->>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
@@ -173,13 +163,9 @@ namespace PolygonCheckerTesting
 	public:
 		TEST_METHOD(setupValidRectanglePoints_1) //validate rectangle for a square
 		{
-<<<<<<< HEAD
-		/*	LINE lines[4];
-			
-=======
 			LINE lines[4];
 
->>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
+
 			lines[0].pointA.x = 1;
 			lines[0].pointA.y = 1;
 			lines[0].pointB.x = 1;
@@ -200,13 +186,11 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-<<<<<<< HEAD
 			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(true, valid);*/
-=======
+			Assert::AreEqual(true, valid);
 			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 
->>>>>>> 9faf6c0925ee46a3ddb43be7197e4c7b222bdd31
+
 		}
 		TEST_METHOD(setupValidRectanglePoints_2) //validate rectangle for a square with negative values
 		{
@@ -422,7 +406,7 @@ namespace PolygonCheckerTesting
 
 		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
 		{
-			/*POINT points[4];
+			POINT points[4];
 			POINT p;
 			p.x = 1;
 			p.y = 2;
@@ -453,7 +437,7 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(1, Lines[3].pointA.x);
 			Assert::AreEqual(6, Lines[3].pointA.y);
 			Assert::AreEqual(1, Lines[3].pointB.x);
-			Assert::AreEqual(2, Lines[3].pointB.y);*/
+			Assert::AreEqual(2, Lines[3].pointB.y);
 		}
 		TEST_METHOD(generateRectangle_Returnlines2)	//generateRectangle test (quadrilateral; random order)
 		{
