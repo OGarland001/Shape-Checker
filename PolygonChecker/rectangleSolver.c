@@ -176,8 +176,6 @@ POINT createPoint(int xValue, int yValue)
 	//take the input x and y values and store them in the new point
 	tempNewPoint.x = xValue;
 	tempNewPoint.y = yValue;
-	//store undefined as the points location as we do not know the points location right away
-	strncpy_s(tempNewPoint.pointName, MAXNAMELEN, "undefined", MAXNAMELEN);
 	//return a newly created point 
 	return tempNewPoint;
 }

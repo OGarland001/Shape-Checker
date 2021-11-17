@@ -1,22 +1,12 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-<<<<<<< HEAD
-#include "..\PolygonChecker\triangleSolver.h"
-
-=======
 #include <stdbool.h>
-#include "..\\PolygonChecker\\main.h"
-#include "..\\PolygonChecker\\triangleSolver.h"
-#include "..\\PolygonChecker\\rectangleSolver.h"
-
-//#include "..\PolygonChecker\rectangleSolver.h"
 
 extern "C" char* analyzeTriangle(int, int, int);
 extern "C" void AngleSolver(int, int, int);
 extern "C" double CosineLawAngleA(int, int, int);
 extern "C" double CosineLawAngleB(int, int, int);
 extern "C" double CosineLawAngleC(int, int, int);
->>>>>>> b6d4d45ddd1bfe4c4c39fbb9e7aa95243b968008
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
@@ -134,7 +124,7 @@ namespace PolygonCheckerTesting
 			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 			Assert::AreEqual(true, valid);
 		}
-		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
+		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
 			POINT points[4];
 			POINT p;
@@ -168,6 +158,111 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(6, Lines[3].pointA.y);
 			Assert::AreEqual(1, Lines[3].pointB.x);
 			Assert::AreEqual(2, Lines[3].pointB.y);
+		}
+		TEST_METHOD(generateRectangle_Returnlines2)	//generateRectangle test (quadrilateral; random order)
+		{
+			POINT points[4];
+			POINT p;
+			p.x = -4;
+			p.y = -2;
+			points[0] = p;
+			p.x = 4;
+			p.y = 4;
+			points[1] = p;
+			p.x = -5;
+			p.y = -2;
+			points[2] = p;
+			p.x = 1;
+			p.y = 6;
+			points[3] = p;
+
+			LINE* Lines = generateRectangle(points);
+			Assert::AreEqual(-5, Lines[0].pointA.x);
+			Assert::AreEqual(-2, Lines[0].pointA.y);
+			Assert::AreEqual(-4, Lines[0].pointB.x);
+			Assert::AreEqual(-2, Lines[0].pointB.y);
+			Assert::AreEqual(-4, Lines[1].pointA.x);
+			Assert::AreEqual(-2, Lines[1].pointA.y);
+			Assert::AreEqual(4, Lines[1].pointB.x);
+			Assert::AreEqual(4, Lines[1].pointB.y);
+			Assert::AreEqual(4, Lines[2].pointA.x);
+			Assert::AreEqual(4, Lines[2].pointA.y);
+			Assert::AreEqual(1, Lines[2].pointB.x);
+			Assert::AreEqual(6, Lines[2].pointB.y);
+			Assert::AreEqual(1, Lines[3].pointA.x);
+			Assert::AreEqual(6, Lines[3].pointA.y);
+			Assert::AreEqual(-5, Lines[3].pointB.x);
+			Assert::AreEqual(-2, Lines[3].pointB.y);
+		}
+		TEST_METHOD(generateRectangle_Returnlines3)	//generateRectangle test (duplicate)
+		{
+			POINT points[4];
+			POINT p;
+			p.x = 0;
+			p.y = 0;
+			points[0] = p;
+			p.x = 0;
+			p.y = 0;
+			points[1] = p;
+			p.x = 0;
+			p.y = 0;
+			points[2] = p;
+			p.x = 0;
+			p.y = 0;
+			points[3] = p;
+
+			LINE* Lines = generateRectangle(points);
+			Assert::AreEqual(0, Lines[0].pointA.x);
+			Assert::AreEqual(0, Lines[0].pointA.y);
+			Assert::AreEqual(0, Lines[0].pointB.x);
+			Assert::AreEqual(0, Lines[0].pointB.y);
+			Assert::AreEqual(0, Lines[1].pointA.x);
+			Assert::AreEqual(0, Lines[1].pointA.y);
+			Assert::AreEqual(0, Lines[1].pointB.x);
+			Assert::AreEqual(0, Lines[1].pointB.y);
+			Assert::AreEqual(0, Lines[2].pointA.x);
+			Assert::AreEqual(0, Lines[2].pointA.y);
+			Assert::AreEqual(0, Lines[2].pointB.x);
+			Assert::AreEqual(0, Lines[2].pointB.y);
+			Assert::AreEqual(0, Lines[3].pointA.x);
+			Assert::AreEqual(0, Lines[3].pointA.y);
+			Assert::AreEqual(0, Lines[3].pointB.x);
+			Assert::AreEqual(0, Lines[3].pointB.y);
+		}
+		TEST_METHOD(generateRectangle_Returnlines4)	//generateRectangle test (quadrilateral; large numbers; random order)
+		{
+			POINT points[4];
+			POINT p;
+			p.x = 123;
+			p.y = 203;
+			points[0] = p;
+			p.x = -12;
+			p.y = -23;
+			points[1] = p;
+			p.x = 234;
+			p.y = -2;
+			points[2] = p;
+			p.x = -41;
+			p.y = 250;
+			points[3] = p;
+
+			LINE* Lines = generateRectangle(points);
+			Assert::AreEqual(-12, Lines[0].pointA.x);
+			Assert::AreEqual(-23, Lines[0].pointA.y);
+			Assert::AreEqual(234, Lines[0].pointB.x);
+			Assert::AreEqual(-2, Lines[0].pointB.y);
+			Assert::AreEqual(234, Lines[1].pointA.x);
+			Assert::AreEqual(-2, Lines[1].pointA.y);
+			Assert::AreEqual(123, Lines[1].pointB.x);
+			Assert::AreEqual(203, Lines[1].pointB.y);
+			Assert::AreEqual(123, Lines[2].pointA.x);
+			Assert::AreEqual(203, Lines[2].pointA.y);
+			Assert::AreEqual(-41, Lines[2].pointB.x);
+			Assert::AreEqual(250, Lines[2].pointB.y);
+			Assert::AreEqual(-41, Lines[3].pointA.x);
+			Assert::AreEqual(250, Lines[3].pointA.y);
+			Assert::AreEqual(-12, Lines[3].pointB.x);
+			Assert::AreEqual(-23, Lines[3].pointB.y);
 		}
 	};
 }
