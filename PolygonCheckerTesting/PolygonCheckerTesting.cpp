@@ -1,11 +1,10 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "..\PolygonChecker\triangleSolver.h"
+//#include "..\PolygonChecker\triangleSolver.h"
 
 #include <stdbool.h>
-#include "..\\PolygonChecker\\main.h"
-#include "..\\PolygonChecker\\triangleSolver.h"
-#include "..\\PolygonChecker\\rectangleSolver.h"
+//#include "..\\PolygonChecker\\main.h"
+//#include "..\\PolygonChecker\\triangleSolver.h"
 
 //#include "..\PolygonChecker\rectangleSolver.h"
 
@@ -19,6 +18,7 @@ extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 extern "C" float findRectanglePerimeter(LINE, LINE, LINE, LINE);
 extern "C" float findRectangleArea(LINE, LINE);
+
 extern "C" LINE* generateRectangle(POINT[]);
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -114,7 +114,7 @@ namespace PolygonCheckerTesting
 			lines[0].pointA.y = 1;
 			lines[0].pointB.x = 1;
 			lines[0].pointB.y = 2;
-			
+
 			lines[1].pointA.x = 1;
 			lines[1].pointA.y = 2;
 			lines[1].pointB.x = 2;
@@ -299,8 +299,51 @@ namespace PolygonCheckerTesting
 			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 			Assert::AreEqual(true, valid);
 		}
+		TEST_METHOD(findRectanglePerimeter1) //return perimeter for a 2x2 square
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 1;
+			lines[0].pointB.y = 3;
+
+			lines[1].pointA.x = 1;
+			lines[1].pointA.y = 3;
+			lines[1].pointB.x = 3;
+			lines[1].pointB.y = 3;
+
+			lines[2].pointA.x = 3;
+			lines[2].pointA.y = 3;
+			lines[2].pointB.x = 3;
+			lines[2].pointB.y = 1;
+
+			lines[3].pointA.x = 3;
+			lines[3].pointA.y = 1;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			float perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(float(8), perimeter);
+		}
+		TEST_METHOD(findRectangleArea1) //return area for a 2x2 square
+		{
+			LINE lines[2];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 1;
+			lines[0].pointB.y = 3;
+
+			lines[1].pointA.x = 1;
+			lines[1].pointA.y = 3;
+			lines[1].pointB.x = 3;
+			lines[1].pointB.y = 3;
 
 
+			float area = findRectangleArea(lines[0], lines[1]);
+			Assert::AreEqual(float(4), area);
+		}
 
 
 		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
