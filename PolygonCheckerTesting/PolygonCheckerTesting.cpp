@@ -24,6 +24,7 @@ extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 extern "C" float findRectanglePerimeter(LINE, LINE, LINE, LINE);
 extern "C" float findRectangleArea(LINE, LINE);
+
 extern "C" LINE* generateRectangle(POINT[]);
 extern "C" POINT createPoint(int, int);
 extern "C" bool arePointsSame(POINT, POINT, POINT, POINT);
@@ -183,7 +184,7 @@ namespace PolygonCheckerTesting
 			lines[0].pointA.y = 1;
 			lines[0].pointB.x = 1;
 			lines[0].pointB.y = 2;
-			
+
 			lines[1].pointA.x = 1;
 			lines[1].pointA.y = 2;
 			lines[1].pointB.x = 2;
@@ -199,8 +200,13 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
+<<<<<<< HEAD
 			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 			Assert::AreEqual(true, valid);*/
+=======
+			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
+
+>>>>>>> 9faf6c0925ee46a3ddb43be7197e4c7b222bdd31
 		}
 		TEST_METHOD(setupValidRectanglePoints_2) //validate rectangle for a square with negative values
 		{
@@ -226,8 +232,8 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = -1;
 			lines[3].pointB.y = -1;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(true, valid);
+			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
+
 		}
 
 		TEST_METHOD(setupValidRectanglePoints_3) //validate rectangle for a parallelogram
@@ -254,8 +260,8 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(false, valid);
+			Assert::IsFalse(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
+
 		}
 
 		TEST_METHOD(setupValidRectanglePoints_4) //validate rectangle for a diagonal line
@@ -282,8 +288,8 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(false, valid);
+			Assert::IsFalse(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
+
 		}
 
 		TEST_METHOD(setupValidRectanglePoints_5) //validate rectangle for a horizontal line
@@ -310,8 +316,7 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(false, valid);
+			Assert::IsFalse(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 		}
 
 		TEST_METHOD(setupValidRectanglePoints_6) //validate rectangle for a vertical line
@@ -338,10 +343,10 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(false, valid);
+
+			Assert::IsFalse(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 		}
-		TEST_METHOD(setupValidRectanglePoints_7) //validate rectangle for a slanted rectangle
+		TEST_METHOD(setupValidRectanglePoints_7) //validate rectangle for a slanted square
 		{
 			LINE lines[4];
 
@@ -352,24 +357,70 @@ namespace PolygonCheckerTesting
 
 			lines[1].pointA.x = 4;
 			lines[1].pointA.y = 1;
-			lines[1].pointB.x = 1;
-			lines[1].pointB.y = -1;
+			lines[1].pointB.x = 2;
+			lines[1].pointB.y = 0;
 
-			lines[2].pointA.x = 1;
-			lines[2].pointA.y = -1;
-			lines[2].pointB.x = 0;
-			lines[2].pointB.y = 1;
+			lines[2].pointA.x = 2;
+			lines[2].pointA.y = 0;
+			lines[2].pointB.x = 1;
+			lines[2].pointB.y = 2;
 
-			lines[3].pointA.x = 0;
-			lines[3].pointA.y = 1;
+			lines[3].pointA.x = 1;
+			lines[3].pointA.y = 2;
 			lines[3].pointB.x = 3;
 			lines[3].pointB.y = 3;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(true, valid);
+
+			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
+		}
+		TEST_METHOD(findRectanglePerimeter1) //return perimeter for a 2x2 square
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 1;
+			lines[0].pointB.y = 3;
+
+			lines[1].pointA.x = 1;
+			lines[1].pointA.y = 3;
+			lines[1].pointB.x = 3;
+			lines[1].pointB.y = 3;
+
+			lines[2].pointA.x = 3;
+			lines[2].pointA.y = 3;
+			lines[2].pointB.x = 3;
+			lines[2].pointB.y = 1;
+
+			lines[3].pointA.x = 3;
+			lines[3].pointA.y = 1;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			float perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(float(8), perimeter);
+		}
+		TEST_METHOD(findRectangleArea1) //return area for a 2x2 square
+		{
+			LINE lines[2];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 1;
+			lines[0].pointB.y = 3;
+
+			lines[1].pointA.x = 1;
+			lines[1].pointA.y = 3;
+			lines[1].pointB.x = 3;
+			lines[1].pointB.y = 3;
+
+
+			float area = findRectangleArea(lines[0], lines[1]);
+			Assert::AreEqual(float(4), area);
 		}
 
-		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
+
+		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
 		{
 			/*POINT points[4];
 			POINT p;
