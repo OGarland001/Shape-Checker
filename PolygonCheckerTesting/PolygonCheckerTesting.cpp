@@ -341,8 +341,7 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(float(4), area);
 		}
 
-
-		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
+		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
 			POINT points[4];
 			POINT p;
@@ -358,8 +357,10 @@ namespace PolygonCheckerTesting
 			p.x = 1;
 			p.y = 6;
 			points[3] = p;
-
+			
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(1, Lines[0].pointA.x);
 			Assert::AreEqual(2, Lines[0].pointA.y);
 			Assert::AreEqual(4, Lines[0].pointB.x);
@@ -394,7 +395,9 @@ namespace PolygonCheckerTesting
 			p.y = 6;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(-5, Lines[0].pointA.x);
 			Assert::AreEqual(-2, Lines[0].pointA.y);
 			Assert::AreEqual(-4, Lines[0].pointB.x);
@@ -429,7 +432,9 @@ namespace PolygonCheckerTesting
 			p.y = 0;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(0, Lines[0].pointA.x);
 			Assert::AreEqual(0, Lines[0].pointA.y);
 			Assert::AreEqual(0, Lines[0].pointB.x);
@@ -464,7 +469,9 @@ namespace PolygonCheckerTesting
 			p.y = 250;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(-12, Lines[0].pointA.x);
 			Assert::AreEqual(-23, Lines[0].pointA.y);
 			Assert::AreEqual(234, Lines[0].pointB.x);
