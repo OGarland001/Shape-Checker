@@ -354,10 +354,9 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 3;
 			lines[3].pointB.y = 3;
 
-
 			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 		}
-		TEST_METHOD(findRectanglePerimeter1) //return perimeter for a 2x2 square
+		TEST_METHOD(findRectanglePerimeter1) //return perimeter for a 2x2 square (2+2+2+2=8)
 		{
 			LINE lines[4];
 
@@ -384,6 +383,33 @@ namespace PolygonCheckerTesting
 			float perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
 			Assert::AreEqual(float(8), perimeter);
 		}
+		TEST_METHOD(findRectanglePerimeter2) //return perimeter for a 4x3 square (4+4+3+3=14)
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 5;
+			lines[0].pointB.y = 1;
+
+			lines[1].pointA.x = 5;
+			lines[1].pointA.y = 1;
+			lines[1].pointB.x = 5;
+			lines[1].pointB.y = 4;
+
+			lines[2].pointA.x = 5;
+			lines[2].pointA.y = 4;
+			lines[2].pointB.x = 1;
+			lines[2].pointB.y = 4;
+
+			lines[3].pointA.x = 1;
+			lines[3].pointA.y = 4;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			float perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(float(14), perimeter);
+		}
 		TEST_METHOD(findRectangleArea1) //return area for a 2x2 square
 		{
 			LINE lines[2];
@@ -402,7 +428,23 @@ namespace PolygonCheckerTesting
 			float area = findRectangleArea(lines[0], lines[1]);
 			Assert::AreEqual(float(4), area);
 		}
+		TEST_METHOD(findRectangleArea2) //return area for a 4x3 rectangle
+		{
+			LINE lines[2];
 
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 5;
+			lines[0].pointB.y = 1;
+
+			lines[1].pointA.x = 5;
+			lines[1].pointA.y = 1;
+			lines[1].pointB.x = 5;
+			lines[1].pointB.y = 4;
+
+			float area = findRectangleArea(lines[0], lines[1]);
+			Assert::AreEqual(float(12), area);
+		}
 		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
 			POINT points[4];
