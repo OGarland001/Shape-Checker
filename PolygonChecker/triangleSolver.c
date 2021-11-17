@@ -41,9 +41,9 @@ void AngleSolver(int sideA, int sideB, int sideC) {
 	angleC = CosineLawAngleC(sideA, sideB, sideC);
 
 	//prints the angles to the user
-	printf("Angle A: %.2f\n", angleA);
-	printf("Angle B: %.2f\n", angleB);
-	printf("Angle C: %.2f\n", angleC);
+	printf("Angle A: %f\n", angleA);
+	printf("Angle B: %f\n", angleB);
+	printf("Angle C: %f\n", angleC);
 
 	//gives user idea of where the angles are from the side lengths they inputted
 	printf("Angle A, is directly across from side A\n");

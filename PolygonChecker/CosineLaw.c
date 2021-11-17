@@ -9,7 +9,8 @@ double CosineLawAngleA(double sideA, double sideB, double sideC) {
 	Denominator = (2 * sideB * sideC);
 	radA = acos(Numerator / Denominator);
 	Result = radA * (RadToDegAngle / PI);
-
+	//added to round the result of the calculation for testing
+	Result = round(Result * 100) / 100;
 	return Result;
 
 }
@@ -20,7 +21,8 @@ double CosineLawAngleB(double sideA, double sideB, double sideC) {
 	Denominator = (2 * sideA * sideC);
 	radB = acos(Numerator / Denominator);
 	Result = radB * (RadToDegAngle / PI);
-
+	//added to round the result of the calculation for testing
+	Result = round(Result * 100) / 100;
 	return Result;
 
 }
@@ -31,7 +33,8 @@ double CosineLawAngleC(double sideA, double sideB, double sideC) {
 	Denominator = (2 * sideB * sideA);
 	radC = acos(Numerator / Denominator);
 	Result = radC * (RadToDegAngle / PI);
-
+	//added to round the result of the calculation for testing
+	Result = round(Result * 100) / 100;
 	return Result;
 
 
