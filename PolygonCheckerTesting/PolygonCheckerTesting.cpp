@@ -1,31 +1,21 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-<<<<<<< HEAD
 #include <stdio.h>
 #include <stdbool.h>
 
 
-
-extern "C" char* analyzeTriangle(int a, int b, int c);
-extern "C" double CosineLawAngleA(double a, double b, double c);
-extern "C" double CosineLawAngleB(double a, double b, double c);
-extern "C" double CosineLawAngleC(double a, double b, double c);
-=======
-#include <stdbool.h>
-
 extern "C" char* analyzeTriangle(int, int, int);
 extern "C" void AngleSolver(int, int, int);
-extern "C" double CosineLawAngleA(int, int, int);
-extern "C" double CosineLawAngleB(int, int, int);
-extern "C" double CosineLawAngleC(int, int, int);
->>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
+extern "C" double CosineLawAngleA(double, double, double);
+extern "C" double CosineLawAngleB(double, double, double);
+extern "C" double CosineLawAngleC(double, double, double);
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
 extern "C" float findRectanglePerimeter(LINE, LINE, LINE, LINE);
 extern "C" float findRectangleArea(LINE, LINE);
 
-extern "C" LINE* generateRectangle(POINT[]);
+extern "C" LINE * generateRectangle(POINT[]);
 extern "C" POINT createPoint(int, int);
 extern "C" bool arePointsSame(POINT, POINT, POINT, POINT);
 
@@ -165,7 +155,7 @@ namespace PolygonCheckerTesting
 			double Result = CosineLawAngleC(7, 12, 15);
 			Assert::AreEqual(100.98, Result);
 		}
-	
+
 	};
 
 	TEST_CLASS(FourPointsFunctionality)
@@ -173,13 +163,9 @@ namespace PolygonCheckerTesting
 	public:
 		TEST_METHOD(setupValidRectanglePoints_1) //validate rectangle for a square
 		{
-<<<<<<< HEAD
-		/*	LINE lines[4];
-			
-=======
 			LINE lines[4];
 
->>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
+
 			lines[0].pointA.x = 1;
 			lines[0].pointA.y = 1;
 			lines[0].pointB.x = 1;
@@ -200,13 +186,11 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-<<<<<<< HEAD
 			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(true, valid);*/
-=======
+			Assert::AreEqual(true, valid);
 			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 
->>>>>>> 9faf6c0925ee46a3ddb43be7197e4c7b222bdd31
+
 		}
 		TEST_METHOD(setupValidRectanglePoints_2) //validate rectangle for a square with negative values
 		{
@@ -419,10 +403,9 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(float(4), area);
 		}
 
-
-		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
+		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
-			/*POINT points[4];
+			POINT points[4];
 			POINT p;
 			p.x = 1;
 			p.y = 2;
@@ -437,7 +420,9 @@ namespace PolygonCheckerTesting
 			p.y = 6;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(1, Lines[0].pointA.x);
 			Assert::AreEqual(2, Lines[0].pointA.y);
 			Assert::AreEqual(4, Lines[0].pointB.x);
@@ -453,7 +438,7 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(1, Lines[3].pointA.x);
 			Assert::AreEqual(6, Lines[3].pointA.y);
 			Assert::AreEqual(1, Lines[3].pointB.x);
-			Assert::AreEqual(2, Lines[3].pointB.y);*/
+			Assert::AreEqual(2, Lines[3].pointB.y);
 		}
 		TEST_METHOD(generateRectangle_Returnlines2)	//generateRectangle test (quadrilateral; random order)
 		{
@@ -472,7 +457,9 @@ namespace PolygonCheckerTesting
 			p.y = 6;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(-5, Lines[0].pointA.x);
 			Assert::AreEqual(-2, Lines[0].pointA.y);
 			Assert::AreEqual(-4, Lines[0].pointB.x);
@@ -507,7 +494,9 @@ namespace PolygonCheckerTesting
 			p.y = 0;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(0, Lines[0].pointA.x);
 			Assert::AreEqual(0, Lines[0].pointA.y);
 			Assert::AreEqual(0, Lines[0].pointB.x);
@@ -542,7 +531,9 @@ namespace PolygonCheckerTesting
 			p.y = 250;
 			points[3] = p;
 
+			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
+			//points are rearranged and lines are created
 			Assert::AreEqual(-12, Lines[0].pointA.x);
 			Assert::AreEqual(-23, Lines[0].pointA.y);
 			Assert::AreEqual(234, Lines[0].pointB.x);
@@ -610,7 +601,7 @@ namespace PolygonCheckerTesting
 		TEST_METHOD(DuplicatePointsFunctionality_NoDuplicatesINPUTED_falseOUTPUTED)
 		{
 			//This is testing the duplicate point check where no duplicates are entered
-			
+
 			//Test case example points
 			POINT one, two, three, four;
 			one.x = 1;
@@ -690,7 +681,7 @@ namespace PolygonCheckerTesting
 
 			//Check to see if the function outputed correct answer 
 			Assert::IsTrue(functionOutput);
-		}	
+		}
 		TEST_METHOD(DuplicatePointsFunctionality_Point1and4sameINPUTED_trueOUTPUTED)
 		{
 			//This is testing the duplicate point check where points 1 and 4 are duplicates
@@ -711,7 +702,7 @@ namespace PolygonCheckerTesting
 
 			//Check to see if the function outputed correct answer 
 			Assert::IsTrue(functionOutput);
-		}	
+		}
 		TEST_METHOD(DuplicatePointsFunctionality_Point2and3sameINPUTED_trueOUTPUTED)
 		{
 			//This is testing the duplicate point check where points 2 and 3 are duplicates
@@ -732,7 +723,7 @@ namespace PolygonCheckerTesting
 
 			//Check to see if the function outputed correct answer 
 			Assert::IsTrue(functionOutput);
-		}	
+		}
 		TEST_METHOD(DuplicatePointsFunctionality_Point2and4sameINPUTED_trueOUTPUTED)
 		{
 			//This is testing the duplicate point check where points 2 and 4 are duplicates
@@ -753,7 +744,7 @@ namespace PolygonCheckerTesting
 
 			//Check to see if the function outputed correct answer 
 			Assert::IsTrue(functionOutput);
-		}	
+		}
 		TEST_METHOD(DuplicatePointsFunctionality_Point3and4sameINPUTED_trueOUTPUTED)
 		{
 			//This is testing the duplicate point check where points 3 and 4 are duplicates
@@ -774,6 +765,6 @@ namespace PolygonCheckerTesting
 
 			//Check to see if the function outputed correct answer 
 			Assert::IsTrue(functionOutput);
-		}	
+		}
 	};
 }
