@@ -108,8 +108,9 @@ void triangleSolver(void) {
 }
 
 //This function collects and checks all 4 corners coordinates for the rectangle 
-POINT getRectanglePoints(int* rectanglePoint)
+POINT getRectanglePoints()
 {
+	int enteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 	//collect the point from the user 
 	//(if the user enters more than 2 numbers the program will interpret that the user is entering the upcoming points corrdinates)
 	for (int index = XARRAYINDEX; index < SIZEOFCOORDINATEARRAY; index++)
@@ -118,7 +119,7 @@ POINT getRectanglePoints(int* rectanglePoint)
 		do
 		{
 			//check to see if the user entered a number if they did collect it if not collect the point again
-			if (scanf_s("%d", &rectanglePoint[index]) == 0)
+			if (scanf_s("%d", &enteredCoordinates[index]) == 0)
 			{
 				printf("Invalid input try again\n");
 				printf_s("Please re-enter the coordinates of the corner on the rectangle in the form of x y:\n");
@@ -133,7 +134,7 @@ POINT getRectanglePoints(int* rectanglePoint)
 		
 	}
 	//formulate and return the point 
-	POINT newPoint = createPoint(rectanglePoint[XARRAYINDEX], rectanglePoint[YARRAYINDEX]);
+	POINT newPoint = createPoint(enteredCoordinates[XARRAYINDEX], enteredCoordinates[YARRAYINDEX]);
 	return newPoint;
 }
 
@@ -144,28 +145,28 @@ void PerformCaseTwo()
 	printf_s("Rectangle selected.\n");
 
 	//collect a corners coordinates
-	int firstEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
+	//int firstEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 	//tell the user to enter a point 
 	printf_s("Please enter the coordinates of a corner on the rectangle in the form of x y:\n");
-	POINT point1 = getRectanglePoints(firstEnteredCoordinates);
+	POINT point1 = getRectanglePoints();
 
 	//collect a different corners coordiantes 
-	int secondEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
+	//int secondEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 	//tell the user to enter a point 
 	printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
-	POINT point2 = getRectanglePoints(secondEnteredCoordinates);
+	POINT point2 = getRectanglePoints();
 
 	//collect a different corners coordiantes 
-	int thirdEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
+	//int thirdEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 	//tell the user to enter a point 
 	printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
-	POINT point3 = getRectanglePoints(thirdEnteredCoordinates);
+	POINT point3 = getRectanglePoints();
 
 	//collect a different corners coordiantes 
-	int fourthEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
+	//int fourthEnteredCoordinates[SIZEOFCOORDINATEARRAY] = { 0, 0 };
 	//tell the user to enter a point 
 	printf_s("Please enter the coordinates of a different corner on the rectangle in the form of x y:\n");
-	POINT point4 = getRectanglePoints(fourthEnteredCoordinates);
+	POINT point4 = getRectanglePoints();
 
 	//check to see if there are any duplicated points
 	bool areDuplicatePoints = arePointsSame(point1, point2, point3, point4);

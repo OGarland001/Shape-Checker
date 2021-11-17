@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+<<<<<<< HEAD
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -9,10 +10,23 @@ extern "C" char* analyzeTriangle(int a, int b, int c);
 extern "C" double CosineLawAngleA(double a, double b, double c);
 extern "C" double CosineLawAngleB(double a, double b, double c);
 extern "C" double CosineLawAngleC(double a, double b, double c);
+=======
+#include <stdbool.h>
+
+extern "C" char* analyzeTriangle(int, int, int);
+extern "C" void AngleSolver(int, int, int);
+extern "C" double CosineLawAngleA(int, int, int);
+extern "C" double CosineLawAngleB(int, int, int);
+extern "C" double CosineLawAngleC(int, int, int);
+>>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
+extern "C" float findRectanglePerimeter(LINE, LINE, LINE, LINE);
+extern "C" float findRectangleArea(LINE, LINE);
 extern "C" LINE* generateRectangle(POINT[]);
+extern "C" POINT createPoint(int, int);
+extern "C" bool arePointsSame(POINT, POINT, POINT, POINT);
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -152,13 +166,19 @@ namespace PolygonCheckerTesting
 		}
 	
 	};
+
 	TEST_CLASS(FourPointsFunctionality)
 	{
 	public:
-		TEST_METHOD(setupValidRectanglePoints_SquareCheck) //validate rectangle for a square
+		TEST_METHOD(setupValidRectanglePoints_1) //validate rectangle for a square
 		{
+<<<<<<< HEAD
 		/*	LINE lines[4];
 			
+=======
+			LINE lines[4];
+
+>>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
 			lines[0].pointA.x = 1;
 			lines[0].pointA.y = 1;
 			lines[0].pointB.x = 1;
@@ -182,7 +202,174 @@ namespace PolygonCheckerTesting
 			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
 			Assert::AreEqual(true, valid);*/
 		}
-		TEST_METHOD(generateRectangle_Returnlines)	//sample generateRectangle test
+		TEST_METHOD(setupValidRectanglePoints_2) //validate rectangle for a square with negative values
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = -1;
+			lines[0].pointA.y = -1;
+			lines[0].pointB.x = -1;
+			lines[0].pointB.y = -2;
+
+			lines[1].pointA.x = -1;
+			lines[1].pointA.y = -2;
+			lines[1].pointB.x = -2;
+			lines[1].pointB.y = -2;
+
+			lines[2].pointA.x = -2;
+			lines[2].pointA.y = -2;
+			lines[2].pointB.x = -2;
+			lines[2].pointB.y = -1;
+
+			lines[3].pointA.x = -2;
+			lines[3].pointA.y = -1;
+			lines[3].pointB.x = -1;
+			lines[3].pointB.y = -1;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(true, valid);
+		}
+
+		TEST_METHOD(setupValidRectanglePoints_3) //validate rectangle for a parallelogram
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 2;
+			lines[0].pointB.y = 4;
+
+			lines[1].pointA.x = 2;
+			lines[1].pointA.y = 4;
+			lines[1].pointB.x = 5;
+			lines[1].pointB.y = 1;
+
+			lines[2].pointA.x = 5;
+			lines[2].pointA.y = 1;
+			lines[2].pointB.x = 6;
+			lines[2].pointB.y = 4;
+
+			lines[3].pointA.x = 6;
+			lines[3].pointA.y = 4;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(false, valid);
+		}
+
+		TEST_METHOD(setupValidRectanglePoints_4) //validate rectangle for a diagonal line
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 2;
+			lines[0].pointB.y = 2;
+
+			lines[1].pointA.x = 2;
+			lines[1].pointA.y = 2;
+			lines[1].pointB.x = 3;
+			lines[1].pointB.y = 3;
+
+			lines[2].pointA.x = 3;
+			lines[2].pointA.y = 3;
+			lines[2].pointB.x = 4;
+			lines[2].pointB.y = 4;
+
+			lines[3].pointA.x = 4;
+			lines[3].pointA.y = 4;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(false, valid);
+		}
+
+		TEST_METHOD(setupValidRectanglePoints_5) //validate rectangle for a horizontal line
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 2;
+			lines[0].pointB.y = 1;
+
+			lines[1].pointA.x = 2;
+			lines[1].pointA.y = 1;
+			lines[1].pointB.x = 3;
+			lines[1].pointB.y = 1;
+
+			lines[2].pointA.x = 3;
+			lines[2].pointA.y = 1;
+			lines[2].pointB.x = 4;
+			lines[2].pointB.y = 1;
+
+			lines[3].pointA.x = 4;
+			lines[3].pointA.y = 1;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(false, valid);
+		}
+
+		TEST_METHOD(setupValidRectanglePoints_6) //validate rectangle for a vertical line
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 1;
+			lines[0].pointA.y = 1;
+			lines[0].pointB.x = 1;
+			lines[0].pointB.y = 2;
+
+			lines[1].pointA.x = 1;
+			lines[1].pointA.y = 2;
+			lines[1].pointB.x = 1;
+			lines[1].pointB.y = 3;
+
+			lines[2].pointA.x = 1;
+			lines[2].pointA.y = 3;
+			lines[2].pointB.x = 1;
+			lines[2].pointB.y = 4;
+
+			lines[3].pointA.x = 1;
+			lines[3].pointA.y = 4;
+			lines[3].pointB.x = 1;
+			lines[3].pointB.y = 1;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(false, valid);
+		}
+		TEST_METHOD(setupValidRectanglePoints_7) //validate rectangle for a slanted rectangle
+		{
+			LINE lines[4];
+
+			lines[0].pointA.x = 3;
+			lines[0].pointA.y = 3;
+			lines[0].pointB.x = 4;
+			lines[0].pointB.y = 1;
+
+			lines[1].pointA.x = 4;
+			lines[1].pointA.y = 1;
+			lines[1].pointB.x = 1;
+			lines[1].pointB.y = -1;
+
+			lines[2].pointA.x = 1;
+			lines[2].pointA.y = -1;
+			lines[2].pointB.x = 0;
+			lines[2].pointB.y = 1;
+
+			lines[3].pointA.x = 0;
+			lines[3].pointA.y = 1;
+			lines[3].pointB.x = 3;
+			lines[3].pointB.y = 3;
+
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(true, valid);
+		}
+
+		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
 			/*POINT points[4];
 			POINT p;
@@ -217,5 +404,325 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(1, Lines[3].pointB.x);
 			Assert::AreEqual(2, Lines[3].pointB.y);*/
 		}
+		TEST_METHOD(generateRectangle_Returnlines2)	//generateRectangle test (quadrilateral; random order)
+		{
+			POINT points[4];
+			POINT p;
+			p.x = -4;
+			p.y = -2;
+			points[0] = p;
+			p.x = 4;
+			p.y = 4;
+			points[1] = p;
+			p.x = -5;
+			p.y = -2;
+			points[2] = p;
+			p.x = 1;
+			p.y = 6;
+			points[3] = p;
+
+			LINE* Lines = generateRectangle(points);
+			Assert::AreEqual(-5, Lines[0].pointA.x);
+			Assert::AreEqual(-2, Lines[0].pointA.y);
+			Assert::AreEqual(-4, Lines[0].pointB.x);
+			Assert::AreEqual(-2, Lines[0].pointB.y);
+			Assert::AreEqual(-4, Lines[1].pointA.x);
+			Assert::AreEqual(-2, Lines[1].pointA.y);
+			Assert::AreEqual(4, Lines[1].pointB.x);
+			Assert::AreEqual(4, Lines[1].pointB.y);
+			Assert::AreEqual(4, Lines[2].pointA.x);
+			Assert::AreEqual(4, Lines[2].pointA.y);
+			Assert::AreEqual(1, Lines[2].pointB.x);
+			Assert::AreEqual(6, Lines[2].pointB.y);
+			Assert::AreEqual(1, Lines[3].pointA.x);
+			Assert::AreEqual(6, Lines[3].pointA.y);
+			Assert::AreEqual(-5, Lines[3].pointB.x);
+			Assert::AreEqual(-2, Lines[3].pointB.y);
+		}
+		TEST_METHOD(generateRectangle_Returnlines3)	//generateRectangle test (duplicate)
+		{
+			POINT points[4];
+			POINT p;
+			p.x = 0;
+			p.y = 0;
+			points[0] = p;
+			p.x = 0;
+			p.y = 0;
+			points[1] = p;
+			p.x = 0;
+			p.y = 0;
+			points[2] = p;
+			p.x = 0;
+			p.y = 0;
+			points[3] = p;
+
+			LINE* Lines = generateRectangle(points);
+			Assert::AreEqual(0, Lines[0].pointA.x);
+			Assert::AreEqual(0, Lines[0].pointA.y);
+			Assert::AreEqual(0, Lines[0].pointB.x);
+			Assert::AreEqual(0, Lines[0].pointB.y);
+			Assert::AreEqual(0, Lines[1].pointA.x);
+			Assert::AreEqual(0, Lines[1].pointA.y);
+			Assert::AreEqual(0, Lines[1].pointB.x);
+			Assert::AreEqual(0, Lines[1].pointB.y);
+			Assert::AreEqual(0, Lines[2].pointA.x);
+			Assert::AreEqual(0, Lines[2].pointA.y);
+			Assert::AreEqual(0, Lines[2].pointB.x);
+			Assert::AreEqual(0, Lines[2].pointB.y);
+			Assert::AreEqual(0, Lines[3].pointA.x);
+			Assert::AreEqual(0, Lines[3].pointA.y);
+			Assert::AreEqual(0, Lines[3].pointB.x);
+			Assert::AreEqual(0, Lines[3].pointB.y);
+		}
+		TEST_METHOD(generateRectangle_Returnlines4)	//generateRectangle test (quadrilateral; large numbers; random order)
+		{
+			POINT points[4];
+			POINT p;
+			p.x = 123;
+			p.y = 203;
+			points[0] = p;
+			p.x = -12;
+			p.y = -23;
+			points[1] = p;
+			p.x = 234;
+			p.y = -2;
+			points[2] = p;
+			p.x = -41;
+			p.y = 250;
+			points[3] = p;
+
+			LINE* Lines = generateRectangle(points);
+			Assert::AreEqual(-12, Lines[0].pointA.x);
+			Assert::AreEqual(-23, Lines[0].pointA.y);
+			Assert::AreEqual(234, Lines[0].pointB.x);
+			Assert::AreEqual(-2, Lines[0].pointB.y);
+			Assert::AreEqual(234, Lines[1].pointA.x);
+			Assert::AreEqual(-2, Lines[1].pointA.y);
+			Assert::AreEqual(123, Lines[1].pointB.x);
+			Assert::AreEqual(203, Lines[1].pointB.y);
+			Assert::AreEqual(123, Lines[2].pointA.x);
+			Assert::AreEqual(203, Lines[2].pointA.y);
+			Assert::AreEqual(-41, Lines[2].pointB.x);
+			Assert::AreEqual(250, Lines[2].pointB.y);
+			Assert::AreEqual(-41, Lines[3].pointA.x);
+			Assert::AreEqual(250, Lines[3].pointA.y);
+			Assert::AreEqual(-12, Lines[3].pointB.x);
+			Assert::AreEqual(-23, Lines[3].pointB.y);
+		}
+
+		TEST_METHOD(PointCreationFunctionality_1923535and1838045932INPUTED_Pointxis1923535Pointyis1838045932OUTPUTED)
+		{
+			//This is testing the point creation functionality from inputed coordiantes where both coordinates are very large
+
+			//Test case example inputs from "user"
+			int xCoordinate = 1923535;
+			int yCoordinate = 1838045932;
+
+			//Call the function given the "user" input
+			POINT returnedPoint = createPoint(xCoordinate, yCoordinate);
+
+			//check to see if a "point" was properly formed 
+			Assert::AreEqual(xCoordinate, returnedPoint.x);
+			Assert::AreEqual(yCoordinate, returnedPoint.y);
+		}
+		TEST_METHOD(PointCreationFunctionality_0and0INPUTED_Pointxis0Pointyis0OUTPUTED)
+		{
+			//This is testing the point creation functionality from inputed coordiantes where both coordinates are zero
+
+			//Test case example inputs from "user"
+			int xCoordinate = 0;
+			int yCoordinate = 0;
+
+			//Call the function given the "user" input
+			POINT returnedPoint = createPoint(xCoordinate, yCoordinate);
+
+			//check to see if a "point" was properly formed 
+			Assert::AreEqual(xCoordinate, returnedPoint.x);
+			Assert::AreEqual(yCoordinate, returnedPoint.y);
+		}
+		TEST_METHOD(PointCreationFunctionality_neg212733andneg234839471INPUTED_Pointxisneg212733Pointyisneg234839471OUTPUTED)
+		{
+			//This is testing the point creation functionality from inputed coordiantes where both coordinates are very small
+
+			//Test case example inputs from "user"
+			int xCoordinate = -212733;
+			int yCoordinate = -234839471;
+
+			//Call the function given the "user" input
+			POINT returnedPoint = createPoint(xCoordinate, yCoordinate);
+
+			//check to see if a "point" was properly formed 
+			Assert::AreEqual(xCoordinate, returnedPoint.x);
+			Assert::AreEqual(yCoordinate, returnedPoint.y);
+		}
+
+		TEST_METHOD(DuplicatePointsFunctionality_NoDuplicatesINPUTED_falseOUTPUTED)
+		{
+			//This is testing the duplicate point check where no duplicates are entered
+			
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 3;
+			two.y = 4;
+			three.x = 5;
+			three.y = 6;
+			four.x = 7;
+			four.y = 8;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsFalse(functionOutput);
+		}
+		TEST_METHOD(DuplicatePointsFunctionality_AllDuplicatesINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where all points are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 2;
+			one.y = 2;
+			two.x = 2;
+			two.y = 2;
+			three.x = 2;
+			three.y = 2;
+			four.x = 2;
+			four.y = 2;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}
+		TEST_METHOD(DuplicatePointsFunctionality_Point1and2sameINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where points 1 and 2 are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 1;
+			two.y = 2;
+			three.x = 5;
+			three.y = 6;
+			four.x = 7;
+			four.y = 8;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}
+		TEST_METHOD(DuplicatePointsFunctionality_Point1and3sameINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where points 1 and 3 are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 3;
+			two.y = 4;
+			three.x = 1;
+			three.y = 2;
+			four.x = 7;
+			four.y = 8;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}	
+		TEST_METHOD(DuplicatePointsFunctionality_Point1and4sameINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where points 1 and 4 are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 3;
+			two.y = 4;
+			three.x = 5;
+			three.y = 6;
+			four.x = 1;
+			four.y = 2;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}	
+		TEST_METHOD(DuplicatePointsFunctionality_Point2and3sameINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where points 2 and 3 are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 3;
+			two.y = 4;
+			three.x = 3;
+			three.y = 4;
+			four.x = 7;
+			four.y = 8;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}	
+		TEST_METHOD(DuplicatePointsFunctionality_Point2and4sameINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where points 2 and 4 are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 3;
+			two.y = 4;
+			three.x = 5;
+			three.y = 6;
+			four.x = 3;
+			four.y = 4;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}	
+		TEST_METHOD(DuplicatePointsFunctionality_Point3and4sameINPUTED_trueOUTPUTED)
+		{
+			//This is testing the duplicate point check where points 3 and 4 are duplicates
+
+			//Test case example points
+			POINT one, two, three, four;
+			one.x = 1;
+			one.y = 2;
+			two.x = 3;
+			two.y = 4;
+			three.x = 5;
+			three.y = 6;
+			four.x = 5;
+			four.y = 6;
+
+			//Call the function given the example points
+			bool functionOutput = arePointsSame(one, two, three, four);
+
+			//Check to see if the function outputed correct answer 
+			Assert::IsTrue(functionOutput);
+		}	
 	};
 }

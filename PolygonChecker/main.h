@@ -12,6 +12,6 @@ int printShapeMenu();
 //this function collects and checks all 3 side lengths of the triangle 
 int* getTriangleSides(int* triangleSides);
 //This function collects and checks all 4 corners coordinates for the rectangle 
-POINT getRectanglePoints(int*);
+POINT getRectanglePoints();
 //This function calls all the features associated with a rectangle 
 void PerformCaseTwo(); 
