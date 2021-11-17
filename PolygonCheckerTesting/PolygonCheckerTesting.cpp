@@ -6,15 +6,9 @@
 
 extern "C" char* analyzeTriangle(int, int, int);
 extern "C" void AngleSolver(int, int, int);
-<<<<<<< HEAD
 extern "C" double CosineLawAngleA(double, double, double);
 extern "C" double CosineLawAngleB(double, double, double);
 extern "C" double CosineLawAngleC(double, double, double);
-=======
-extern "C" double CosineLawAngleA(int, int, int);
-extern "C" double CosineLawAngleB(int, int, int);
-extern "C" double CosineLawAngleC(int, int, int);
->>>>>>> 06adc0930ba44646799e810dea7ce78c540b6209
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
@@ -467,11 +461,8 @@ namespace PolygonCheckerTesting
 			p.x = 1;
 			p.y = 6;
 			points[3] = p;
-<<<<<<< HEAD
 
-=======
 			
->>>>>>> 06adc0930ba44646799e810dea7ce78c540b6209
 			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
 			//points are rearranged and lines are created
