@@ -176,12 +176,7 @@ POINT createPoint(int xValue, int yValue)
 	//take the input x and y values and store them in the new point
 	tempNewPoint.x = xValue;
 	tempNewPoint.y = yValue;
-<<<<<<< HEAD
-	
-=======
-	//store undefined as the points location as we do not know the points location right away
 
->>>>>>> 06adc0930ba44646799e810dea7ce78c540b6209
 	//return a newly created point 
 	return tempNewPoint;
 }
