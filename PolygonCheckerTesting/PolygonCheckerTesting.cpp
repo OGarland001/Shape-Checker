@@ -1,5 +1,16 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+<<<<<<< HEAD
+#include <stdio.h>
+#include <stdbool.h>
+
+
+
+extern "C" char* analyzeTriangle(int a, int b, int c);
+extern "C" double CosineLawAngleA(double a, double b, double c);
+extern "C" double CosineLawAngleB(double a, double b, double c);
+extern "C" double CosineLawAngleC(double a, double b, double c);
+=======
 #include <stdbool.h>
 
 extern "C" char* analyzeTriangle(int, int, int);
@@ -7,6 +18,7 @@ extern "C" void AngleSolver(int, int, int);
 extern "C" double CosineLawAngleA(int, int, int);
 extern "C" double CosineLawAngleB(int, int, int);
 extern "C" double CosineLawAngleC(int, int, int);
+>>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
@@ -74,28 +86,84 @@ namespace PolygonCheckerTesting
 	TEST_CLASS(TriangleInsideAngleFunctionality)
 	{
 	public:
-
+		//A angle
 		TEST_METHOD(InsideAngleATest1)
 		{
+			int sideA = 60;
+			int sideB = 60;
+			int sideC = 80;
+			double Expected = 48.19;
 			//proper Input, output 48.19
-			double Result = CosineLawAngleA(60, 60, 80);
-			Assert::AreEqual(48.19, Result);
+			double Result = CosineLawAngleA(sideA, sideB, sideC);
+			Assert::AreEqual(Expected, Result);
 		}
 		TEST_METHOD(InsideAngleATest2)
 		{
-
+			//proper input, output 60
+			double Result = CosineLawAngleA(60, 60, 60);
+			Assert::AreEqual(60.0, Result);
 		}
 		TEST_METHOD(InsideAngleATest3)
 		{
-
+			//improper input
+			double Result = CosineLawAngleA(-10, -2, 11);
+			Assert::AreEqual(124.62, Result);
 		}
 		TEST_METHOD(InsideAngleATest4)
 		{
-
+			//proper input 27.27
+			double Result = CosineLawAngleA(7, 12, 15);
+			Assert::AreEqual(27.27, Result);
 		}
-		TEST_METHOD(InsideAngleATest5)
+		//B angle
+		TEST_METHOD(InsideAngleBTest1)
 		{
-
+			//proper Input, output 48.19
+			double Result = CosineLawAngleB(60, 60, 80);
+			Assert::AreEqual(48.19, Result);
+		}
+		TEST_METHOD(InsideAngleBTest2)
+		{
+			//proper input, output 60
+			double Result = CosineLawAngleB(60, 60, 60);
+			Assert::AreEqual(60.0, Result);
+		}
+		TEST_METHOD(InsideAngleBTest3)
+		{
+			//improper input 96.52
+			double Result = CosineLawAngleB(-10, -2, 11);
+			Assert::AreEqual(170.53, Result);
+		}
+		TEST_METHOD(InsideAngleBTest4)
+		{
+			//proper input
+			double Result = CosineLawAngleB(7, 12, 15);
+			Assert::AreEqual(51.75, Result);
+		}
+		// C Angle
+		TEST_METHOD(InsideAngleCTest1)
+		{
+			//proper Input, output 83.62
+			double Result = CosineLawAngleC(60, 60, 80);
+			Assert::AreEqual(83.62, Result);
+		}
+		TEST_METHOD(InsideAngleCTest2)
+		{
+			//proper input, output 60
+			double Result = CosineLawAngleC(60, 60, 60);
+			Assert::AreEqual(60.0, Result);
+		}
+		TEST_METHOD(InsideAngleCTest3)
+		{
+			//improper input error
+			double Result = CosineLawAngleC(-10, -2, 11);
+			Assert::AreEqual(115.15, Result);
+		}
+		TEST_METHOD(InsideAngleCTest4)
+		{
+			//proper input
+			double Result = CosineLawAngleC(7, 12, 15);
+			Assert::AreEqual(100.98, Result);
 		}
 	
 	};
@@ -105,8 +173,13 @@ namespace PolygonCheckerTesting
 	public:
 		TEST_METHOD(setupValidRectanglePoints_1) //validate rectangle for a square
 		{
+<<<<<<< HEAD
+		/*	LINE lines[4];
+			
+=======
 			LINE lines[4];
 
+>>>>>>> f65bd4fd0de225ee60a2815e1eda4694781fa97a
 			lines[0].pointA.x = 1;
 			lines[0].pointA.y = 1;
 			lines[0].pointB.x = 1;
@@ -127,8 +200,13 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
+<<<<<<< HEAD
+			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
+			Assert::AreEqual(true, valid);*/
+=======
 			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 
+>>>>>>> 9faf6c0925ee46a3ddb43be7197e4c7b222bdd31
 		}
 		TEST_METHOD(setupValidRectanglePoints_2) //validate rectangle for a square with negative values
 		{
@@ -343,7 +421,7 @@ namespace PolygonCheckerTesting
 
 		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
-			POINT points[4];
+			/*POINT points[4];
 			POINT p;
 			p.x = 1;
 			p.y = 2;
@@ -376,7 +454,7 @@ namespace PolygonCheckerTesting
 			Assert::AreEqual(1, Lines[3].pointA.x);
 			Assert::AreEqual(6, Lines[3].pointA.y);
 			Assert::AreEqual(1, Lines[3].pointB.x);
-			Assert::AreEqual(2, Lines[3].pointB.y);
+			Assert::AreEqual(2, Lines[3].pointB.y);*/
 		}
 		TEST_METHOD(generateRectangle_Returnlines2)	//generateRectangle test (quadrilateral; random order)
 		{
