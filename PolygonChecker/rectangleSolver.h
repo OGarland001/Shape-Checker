@@ -10,7 +10,6 @@
 
 
 typedef struct Point {		//structure for points
-	char pointName[MAXNAMELEN];
 	int x, y;
 }POINT;
 
