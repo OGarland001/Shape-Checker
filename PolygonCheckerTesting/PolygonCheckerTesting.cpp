@@ -424,6 +424,10 @@ namespace PolygonCheckerTesting
 			p.y = 6;
 			points[3] = p;
 
+<<<<<<< HEAD
+=======
+			//call function that takes points as an input
+>>>>>>> 40fef716434d9cbbe1c7c2397e0dac9b1b94f4d3
 			LINE* Lines = generateRectangle(points);
 			//points are rearranged and lines are created
 			Assert::AreEqual(1, Lines[0].pointA.x);
