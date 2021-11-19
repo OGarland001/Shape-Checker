@@ -6,15 +6,9 @@
 
 extern "C" char* analyzeTriangle(int, int, int);
 extern "C" void AngleSolver(int, int, int);
-<<<<<<< HEAD
 extern "C" double CosineLawAngleA(double, double, double);
 extern "C" double CosineLawAngleB(double, double, double);
 extern "C" double CosineLawAngleC(double, double, double);
-=======
-extern "C" double CosineLawAngleA(int, int, int);
-extern "C" double CosineLawAngleB(int, int, int);
-extern "C" double CosineLawAngleC(int, int, int);
->>>>>>> 06adc0930ba44646799e810dea7ce78c540b6209
 extern "C" struct POINT { int x, y; };	//extern point struct
 extern "C" struct LINE { POINT pointA, pointB; };	//extern line struct
 extern "C" bool setupValidRectanglePoints(LINE, LINE, LINE, LINE);
@@ -169,6 +163,10 @@ namespace PolygonCheckerTesting
 	public:
 		TEST_METHOD(setupValidRectanglePoints_1) //validate rectangle for a square
 		{
+
+			LINE lines[4];
+			
+
 			LINE lines[4];
 
 
@@ -360,9 +358,10 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 3;
 			lines[3].pointB.y = 3;
 
+
 			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 		}
-		TEST_METHOD(findRectanglePerimeter1) //return perimeter for a 2x2 square (2+2+2+2=8)
+		TEST_METHOD(findRectanglePerimeter1) //return perimeter for a 2x2 square
 		{
 			LINE lines[4];
 
@@ -389,33 +388,6 @@ namespace PolygonCheckerTesting
 			float perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
 			Assert::AreEqual(float(8), perimeter);
 		}
-		TEST_METHOD(findRectanglePerimeter2) //return perimeter for a 4x3 square (4+4+3+3=14)
-		{
-			LINE lines[4];
-
-			lines[0].pointA.x = 1;
-			lines[0].pointA.y = 1;
-			lines[0].pointB.x = 5;
-			lines[0].pointB.y = 1;
-
-			lines[1].pointA.x = 5;
-			lines[1].pointA.y = 1;
-			lines[1].pointB.x = 5;
-			lines[1].pointB.y = 4;
-
-			lines[2].pointA.x = 5;
-			lines[2].pointA.y = 4;
-			lines[2].pointB.x = 1;
-			lines[2].pointB.y = 4;
-
-			lines[3].pointA.x = 1;
-			lines[3].pointA.y = 4;
-			lines[3].pointB.x = 1;
-			lines[3].pointB.y = 1;
-
-			float perimeter = findRectanglePerimeter(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(float(14), perimeter);
-		}
 		TEST_METHOD(findRectangleArea1) //return area for a 2x2 square
 		{
 			LINE lines[2];
@@ -434,23 +406,7 @@ namespace PolygonCheckerTesting
 			float area = findRectangleArea(lines[0], lines[1]);
 			Assert::AreEqual(float(4), area);
 		}
-		TEST_METHOD(findRectangleArea2) //return area for a 4x3 rectangle
-		{
-			LINE lines[2];
 
-			lines[0].pointA.x = 1;
-			lines[0].pointA.y = 1;
-			lines[0].pointB.x = 5;
-			lines[0].pointB.y = 1;
-
-			lines[1].pointA.x = 5;
-			lines[1].pointA.y = 1;
-			lines[1].pointB.x = 5;
-			lines[1].pointB.y = 4;
-
-			float area = findRectangleArea(lines[0], lines[1]);
-			Assert::AreEqual(float(12), area);
-		}
 		TEST_METHOD(generateRectangle_Returnlines)	//generateRectangle test (rectangle; random order)
 		{
 			POINT points[4];
@@ -467,17 +423,13 @@ namespace PolygonCheckerTesting
 			p.x = 1;
 			p.y = 6;
 			points[3] = p;
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> 06adc0930ba44646799e810dea7ce78c540b6209
-			//call function that takes points as an input
 			LINE* Lines = generateRectangle(points);
 			//points are rearranged and lines are created
 			Assert::AreEqual(1, Lines[0].pointA.x);
 			Assert::AreEqual(2, Lines[0].pointA.y);
 			Assert::AreEqual(4, Lines[0].pointB.x);
+			Assert::AreEqual(2, Lines[0].pointB.y);
 			Assert::AreEqual(2, Lines[0].pointB.y);
 			Assert::AreEqual(4, Lines[1].pointA.x);
 			Assert::AreEqual(2, Lines[1].pointA.y);
