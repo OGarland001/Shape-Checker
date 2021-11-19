@@ -163,9 +163,7 @@ namespace PolygonCheckerTesting
 	public:
 		TEST_METHOD(setupValidRectanglePoints_1) //validate rectangle for a square
 		{
-
 			LINE lines[4];
-			
 
 
 			lines[0].pointA.x = 1;
@@ -188,8 +186,6 @@ namespace PolygonCheckerTesting
 			lines[3].pointB.x = 1;
 			lines[3].pointB.y = 1;
 
-			bool valid = setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]);
-			Assert::AreEqual(true, valid);
 			Assert::IsTrue(setupValidRectanglePoints(lines[0], lines[1], lines[2], lines[3]));
 
 
