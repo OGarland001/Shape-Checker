@@ -34,6 +34,15 @@ bool setupValidRectanglePoints(LINE line1, LINE line2, LINE line3, LINE line4)
 			valid = false;
 		}
 
+		if (slope1 == 0 && (line2.pointB.x - line2.pointA.x == 0 && line2.pointB.y != line2.pointA.y) && //slope1 & slope3 horizontal, slope2 and slope4 vertical
+			slope3 == 0 && (line4.pointB.x - line4.pointA.x == 0 && line4.pointB.y != line4.pointA.y)) {
+			valid = true;
+		}
+
+		if ((line1.pointB.x - line1.pointA.x == 0 && line1.pointA.y != line1.pointB.y) && slope2 == 0 //slope2 & slope4 horizontal, slope1 and slope3 vertical
+			&& (line3.pointB.x - line3.pointA.x == 0 && line3.pointA.y != line3.pointB.y) && slope4 == 0) {
+			valid = true;
+		}
 	}
 		
 	return valid;
@@ -120,14 +129,11 @@ LINE* generateRectangle(POINT points[])
 //function takes in a line, returning the line length
 float findLength(LINE line) {
 	POINT point1, point2;
-	int x1, x2, y1, y2, rise, run;
-	int length;
-	x1 = line.pointA.x;
-	y1 = line.pointA.y;
-	x2 = line.pointB.x;
-	y2 = line.pointB.y;
-	rise = y2 - y1;
-	run = x2 - x1;
+	
+	int length, rise, run;
+
+	rise = line.pointB.y - line.pointA.y;
+	run = line.pointB.x - line.pointA.x;
 
 	length = sqrt(pow(run, 2) + pow(rise, 2));
 
